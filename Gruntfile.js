@@ -6,7 +6,7 @@ module.exports = function(grunt) {
         jshint: {
             dev: {
                 src: [
-                    'src/**/*.js', 'Gruntfile.js'
+                    'src/**/*.js', 'Gruntfile.js', 'builds/**/*.js'
                 ],
                 options: {
                     jshintrc: true
@@ -16,6 +16,7 @@ module.exports = function(grunt) {
         jscs: {
             src: 'src',
             gruntfile: 'Gruntfile.js',
+            builds: 'builds/**/*.js',
             options: {
                 config: '.jscsrc'
             }
@@ -26,6 +27,8 @@ module.exports = function(grunt) {
         },
     });
 
-    grunt.registerTask('dev', ['jshint', 'jscs']);
+    grunt.loadTasks('builds');
+
+    grunt.registerTask('dev', ['jshint', 'jscs', 'watch']);
     grunt.registerTask('default', ['dev']);
 };
