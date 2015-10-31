@@ -1,7 +1,14 @@
 define([
-    './core',
-], function(axedia) {
+    './number',
+    './string',
+    './regexp'
+], function($Number, $String, $RegExp) {
+    // Axedia namespace
+    var axedia = {
+        Number: $Number,
+        String: $String,
+        RegExp: $RegExp
+    };
 
-return (window.Axedia = window.Axd = axedia);
-
+    window.axedia = window.axd = axedia;
 });
