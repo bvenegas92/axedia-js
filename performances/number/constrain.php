@@ -2,7 +2,7 @@
 <html ng-app="axedia">
 <head>
 <title>AxediaJS</title>
-<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
 <style>
   table tbody tr:last-of-type{
   background-color: #f2dede;
@@ -22,7 +22,9 @@
           <td>Cantidad</td>
           <td>Ciclos</td>
           <td>Ops/Sec</td>
-          <td>Eficiencia</td>
+          <th>Promedio</th>
+          <th>Margen de Error</th>
+          <th>Eficiencia</th>
         </thead>
         <tbody>
           <tr ng-repeat="b in benchmarks | orderBy : '-opsec'">
@@ -30,6 +32,8 @@
             <td>{{b.count}}</td>
             <td>{{b.cycles}}</td>
             <td>{{b.opsec}}</td>
+            <td>{{b.stats.mean}}</td>
+            <td>{{b.stats.moe}}</td>
             <td>{{b.porc}}</td>
           </tr>
         </tbody>
@@ -37,22 +41,22 @@
     </div>
   </div>
 </div>
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
-<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="bower_components/angular/angular.min.js"></script>
-<script src="bower_components/benchmark/benchmark.js"></script>
-<script src="dist/axedia.js"></script>
+<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/bower_components/angular/angular.min.js"></script>
+<script src="/bower_components/benchmark/benchmark.js"></script>
+<script src="/dist/axedia.js"></script>
 <script>
 /* Funciones */
 Benchmark.prototype.setup = function() {
-  function constrain1(num, min, max) {
+  function operadores(num, min, max) {
     return (num < min) ? min : ((num > max) ? max : num);
   }
 
   var _min = Math.min,
   _max = Math.max;
 
-  function constrain2(num, min, max) {
+  function varLocales(num, min, max) {
     if (!isNaN(min)) {
       num = _min(min, num);
     }
@@ -62,7 +66,7 @@ Benchmark.prototype.setup = function() {
     return num;
   }
 
-  function constrain3(num, min, max) {
+  function mathFuncs(num, min, max) {
     if (!isNaN(min)) {
       num = Math.min(min, num);
     }
@@ -87,25 +91,25 @@ Benchmark.prototype.setup = function() {
 
 /* Tests */
 var suite = new Benchmark.Suite;
-suite.add('operators', function() {
-  constrain1(10, 0, 20);
-  constrain1(10, undefined, 5);
-  constrain1(10, 0, undefined);
-  constrain1(10, undefined, undefined);
+suite.add('operadores', function() {
+  operadores(10, 0, 20);
+  operadores(10, undefined, 5);
+  operadores(10, 0, undefined);
+  operadores(10, undefined, undefined);
 })
-.add('cached-funcs', function() {
-  constrain2(10, 0, 20);
-  constrain2(10, undefined, 5);
-  constrain2(10, 0, undefined);
-  constrain2(10, undefined, undefined);
+.add('variable Locales', function() {
+  varLocales(10, 0, 20);
+  varLocales(10, undefined, 5);
+  varLocales(10, 0, undefined);
+  varLocales(10, undefined, undefined);
 })
-.add('direct-math', function() {
-  constrain3(10, 0, 20);
-  constrain3(10, undefined, 5);
-  constrain3(10, 0, undefined);
-  constrain3(10, undefined, undefined);
+.add('math functions', function() {
+  mathFuncs(10, 0, 20);
+  mathFuncs(10, undefined, 5);
+  mathFuncs(10, 0, undefined);
+  mathFuncs(10, undefined, undefined);
 })
-.add('guarded-math', function() {
+.add('guarded math', function() {
   constrain4(10, 0, 20);
   constrain4(10, undefined, 5);
   constrain4(10, 0, undefined);
@@ -119,6 +123,7 @@ angular.module('axedia', [])
   suite.on('cycle', function(event) {
     var b = event.target;
     b.opsec = Math.floor(b.hz);
+    b.eficiencia = b.stats.mean + b.stats.moe;
     $scope.benchmarks.push(b);
     $scope.$apply();
   })
