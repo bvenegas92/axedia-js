@@ -51,26 +51,39 @@ module.exports = function(grunt) {
             // Multiple exports
             .replace(/\s*exports\.\w+\s*=\s*\w+;/g, '');
 
-        // Remove define wrappers, closure ends, and empty declarations
+        // Remueve define wrappers, closure ends, and declaraciones vacias
         contents = contents
             .replace(/define\([^{]*?{/, '')
             .replace(/\}\s*?\);[^}\w]*$/, '');
 
-        // Remove anything wrapped with
+        // Remueve cualquier cosa wrapped con
         // /* ExcludeStart */ /* ExcludeEnd */
-        // or a single line directly after a // BuildExclude comment
+        // o simple lineas despues de // BuildExclude comment
         contents = contents
             .replace(/\/\*\s*ExcludeStart\s*\*\/[\w\W]*?\/\*\s*ExcludeEnd\s*\*\//ig, '')
             .replace(/\/\/\s*BuildExclude\n\r?[\w\W]*?\n\r?/ig, '');
 
-        // Remove empty definitions
+        // Remueve definiciones vacias
         contents = contents
             .replace(/define\(\[[^\]]*\]\)[\W\n]+$/, '');
 
         return contents;
     }
 
-    grunt.registerTask('dev', ['jshint', 'jscs', 'requirejs', 'watch']);
+    // Parser
+    grunt.task.registerTask('parser', 'Remueve un salto de linea cuando encuentre dos seguidos', function() {
+        var contents = grunt.file.read('dist/axedia.js');
+
+        // Remuve saltos de linea multiple
+        contents = contents.replace(/\n{2,}/g, '');
+
+        // Remueve saltos de linea entre declaraciones de variables;
+        contents = contents.replace(/(var.[^;]*;)\s+\n(?=\s*var)/g, '$1\n');
+
+        grunt.file.write('dist/axedia.js', contents);
+    });
+
+    grunt.registerTask('dev', ['jshint', 'jscs', 'requirejs', 'parser', 'watch']);
     grunt.registerTask('all', ['requirejs:all']);
     grunt.registerTask('default', ['dev']);
 };
