@@ -1,43 +1,37 @@
 define([
-    './math/floor',
-    './math/random'
-],function(_floor, _random) {
+    './core'
+], function($Number, mathFloor, mathRandom) {
     // Number namespace
-    var $Number = {
+    $Number = {
         /**
          * Limita un numero al intervalo [min, max]
          *
-         * PERFORMACE - number/constrain.php
-         * El uso de operadores es la mejor opcion
-         *
-         * @param  {number} number Numero a limitar
-         * @param  {number} min    Minimo del intervalo
-         * @param  {number} max    Maximo del intervalo
-         * @return {number}        Numero limitado
+         * @param  {Number} number Numero a limitar
+         * @param  {Number} min    Minimo del intervalo
+         * @param  {Number} max    Maximo del intervalo
+         * @return {Number}        Numero limitado
          */
         constrain: function(number, min, max) {
-            var x = parseFloat(number);
+            number = parseFloat(number);
+
             if (min === null) {
                 min = number;
             }
             if (max === null) {
                 max = number;
             }
-            return (x < min) ? min : ((x > max) ? max : x);
+            return (number < min) ? min : ((number > max) ? max : number);
         },
 
         /**
          * Genera un numero aleatorio en el intervalo [from, to]
          *
-         * PERFORMACE - number/randomInt.php
-         * El uso de var locales para cachear funciones Math es la mejor opción
-         *
-         * @param  {number} min    Minimo del intervalo
+         * @param  {Number} min    Minimo del intervalo
          * @param  {number} max    Maximo del intervalo
-         * @return {number}        Numero aleatorio
+         * @return {Number}        Numero aleatorio
          */
         randomInt: function(min, max) {
-            return _floor(_random() * (max - min + 1) + min);
+            return mathFloor(mathRandom() * (max - min + 1) + min);
         },
     };
 });

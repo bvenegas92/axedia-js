@@ -1,12 +1,19 @@
-define(function() {
+define([
+    './core'
+], function($RegExp) {
     // RegExp namespace
-    var $RegExp = {
+    $RegExp = {
         /**
          * Espacios (i.e. ' ', \t, \n, \r, \v) al inicio y fin
          *
          * @type {RegExp}
          */
-        BASIC_TRIM: /^\s+|\s+$/g,
-        WHITE_SPACE: /\s+/
+        SPACES_TRIM: /^\s+|\s+$/g,
+        /**
+         * Espacios (i.e. ' ', \t, \n, \r, \v)
+         *
+         * @type {RegExp}
+         */
+        SPACES: /\s+/
     };
 });

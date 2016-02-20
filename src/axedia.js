@@ -1,14 +1,14 @@
 define([
+    './array',
     './number',
-    './string',
-    './regexp'
-], function($Number, $String, $RegExp) {
-    // Axedia namespace
-    var axedia = {
+    './regexp',
+    './string'
+], function($Array, $Number, $RegExp, $String) {
+    // Axedia Namespace
+    global.Axedia = global.Axd = {
+        Array: $Array,
         Number: $Number,
-        String: $String,
-        RegExp: $RegExp
+        RegExp: $RegExp,
+        String: $String
     };
-
-    window.axedia = window.axd = axedia;
 });
