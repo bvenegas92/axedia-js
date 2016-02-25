@@ -1,0 +1,8 @@
+{
+    "name": "axedia.js",
+    "modules": [
+        "Array",
+        "Number",
+        "RegExp"
+    ]
+}

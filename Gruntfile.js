@@ -21,12 +21,17 @@ module.exports = function(grunt) {
             }
         },
         watch: { // observar cambios en codigo
-            files: [
-                'src/**/*.js',
-                'Gruntfile.js',
-                'test/**/*.js'
-            ],
-            tasks: ['style', 'compile', 'karma:dev:run']
+            axd: {
+                files: [
+                    'src/**/*.js',
+                    'Gruntfile.js'
+                ],
+                tasks: ['style', 'build', 'karma:dev:run']
+            },
+            test: {
+                files: ['test/**/*.js'],
+                tasks: ['karma:dev:run']
+            }
         },
         requirejs: { // compilacion
             dev: {
@@ -76,21 +81,65 @@ module.exports = function(grunt) {
         return contents;
     }
 
-    // Elimina espacios innecesarios en la compilacion
-    grunt.task.registerTask('removeSpaces', 'Remueve un salto de linea cuando encuentre dos seguidos', function() {
-        var contents = grunt.file.read('dist/axedia.js'); // archivo a editar
-
+    function removeSpaces(file) {
+        var contents = grunt.file.read(file); // archivo a editar
         // Remuve saltos de linea multiple
         contents = contents.replace(/\n{2,}/g, '');
-
         // Remueve saltos de linea entre declaraciones de variables;
         contents = contents.replace(/(var.[^;]*;)\s+\n(?=\s*var)/g, '$1\n');
+        grunt.file.write(file, contents);
+    }
 
-        grunt.file.write('dist/axedia.js', contents);
+    // custom builder
+    grunt.task.registerTask('build', 'Genera un build con la ruta del archivo json proporcionado', function(subtask) {
+        subtask = subtask || 'create';
+        var fileName = grunt.option('file') || 'axedia',
+        config = grunt.file.readJSON('builds/' + fileName + '.json'),
+        modules = config.modules,
+        dependencies = [],
+        i;
+
+        if (subtask === 'create') {
+            // crea un archivo define para poder realizar el build
+            for (i = 0; i < modules.length; i++) {
+                findModule(modules[i]);
+            }
+            dependencies = dependencies.map(function(item) { return '"' + item + '"'; });
+            grunt.file.write('src/tmp_' + config.name, 'define([' + dependencies.join(',') + ']);');
+            grunt.task.run('build:compile');
+        } else if (subtask === 'compile') {
+            // cambia la config del task requirejs para que se ejecute con el archivo temporal creado
+            grunt.config('requirejs.dev.options.out', 'dist/' + config.name);
+            grunt.config('requirejs.dev.options.name', 'tmp_' + config.name.replace('.js', ''));
+            grunt.task.run(['requirejs', 'build:delete']);
+        } else if (subtask === 'delete') {
+            // remueve saltos de linea multiples y elimina el archivo temporal
+            removeSpaces('dist/' + config.name);
+            grunt.file.delete('src/tmp_' + config.name);
+        }
+
+        // encuentra todos los archivos de un modulo
+        function findModule(module) {
+            var files, i;
+
+            // parse a camelCase
+            module = module.split('.').map(function(item) {
+                return item.charAt(0).toLowerCase() + item.substr(1);
+            }).join('/');
+            module = module.indexOf('src/') !== -1 ? module : 'src/' + module;
+
+            if (grunt.file.isDir(module)) {
+                files = grunt.file.expand(module + '/**/*.js');
+                for (i = 0; i < files.length; i++) {
+                    dependencies.push(files[i].replace('src', '.'));
+                }
+            } else if (grunt.file.isFile(module)) {
+                dependencies.push(module.replace('src', '.'));
+            }
+        }
     });
 
     grunt.registerTask('style', ['jshint', 'jscs']); // estilo y validación del codigo
-    grunt.registerTask('compile', ['requirejs', 'removeSpaces']); // compilacion y formateo de archivos
-    grunt.registerTask('dev', ['style', 'compile', 'karma:dev:start','watch']); // desarrollo
+    grunt.registerTask('dev', ['style', 'build', 'karma:dev:start','watch']); // desarrollo
     grunt.registerTask('default', ['dev']);
 };
