@@ -3,5 +3,5 @@
     "validateIndentation": 4,
     "disallowMultipleVarDecl": false,
     "maximumLineLength": 120,
-    "excludeFiles": [ "src/intro.js", "src/outro.js"]
+    "excludeFiles": [ "src/intro.js", "src/outro.js", "src/tmp_builder.js"]
 }

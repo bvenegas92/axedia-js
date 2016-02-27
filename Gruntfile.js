@@ -24,6 +24,7 @@ module.exports = function(grunt) {
             axd: {
                 files: [
                     'src/**/*.js',
+                    '!src/tmp_builder.js',
                     'Gruntfile.js'
                 ],
                 tasks: ['style', 'build', 'karma:dev:run']
@@ -105,17 +106,17 @@ module.exports = function(grunt) {
                 findModule(modules[i]);
             }
             dependencies = dependencies.map(function(item) { return '"' + item + '"'; });
-            grunt.file.write('src/tmp_' + config.name, 'define([' + dependencies.join(',') + ']);');
+            grunt.file.write('src/tmp_builder.js', 'define([' + dependencies.join(',') + ']);');
             grunt.task.run('build:compile');
         } else if (subtask === 'compile') {
             // cambia la config del task requirejs para que se ejecute con el archivo temporal creado
             grunt.config('requirejs.dev.options.out', 'dist/' + config.name);
-            grunt.config('requirejs.dev.options.name', 'tmp_' + config.name.replace('.js', ''));
+            grunt.config('requirejs.dev.options.name', 'tmp_builder');
             grunt.task.run(['requirejs', 'build:delete']);
         } else if (subtask === 'delete') {
             // remueve saltos de linea multiples y elimina el archivo temporal
             removeSpaces('dist/' + config.name);
-            grunt.file.delete('src/tmp_' + config.name);
+            grunt.file.delete('src/tmp_builder.js');
         }
 
         // encuentra todos los archivos de un modulo
@@ -133,7 +134,7 @@ module.exports = function(grunt) {
                 for (i = 0; i < files.length; i++) {
                     dependencies.push(files[i].replace('src', '.'));
                 }
-            } else if (grunt.file.isFile(module)) {
+            } else if (grunt.file.isFile(module + '.js')) {
                 dependencies.push(module.replace('src', '.'));
             }
         }

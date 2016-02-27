@@ -1,8 +1,8 @@
 define([
     './array',
-    '../var/array/slice',
+    './slice',
     './unique'
-], function($Array, arraySlice, $ArrayUnique) {
+], function($Array) {
     /*
      * Une multiples arreglos en uno solo con elementos unicos
      *
@@ -12,7 +12,7 @@ define([
      * @return {Array}         Arreglo unido
      */
     $Array.merge = function() {
-        var args = arraySlice.call(arguments),
+        var args = $Array.slice(arguments),
             array = [],
             i, ln;
 

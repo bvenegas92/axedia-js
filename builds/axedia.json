@@ -3,6 +3,7 @@
     "modules": [
         "Array",
         "Number",
-        "RegExp"
+        "RegExp",
+        "Type"
     ]
 }
