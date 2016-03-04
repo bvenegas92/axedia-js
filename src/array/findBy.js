@@ -10,7 +10,6 @@ define([
      *                                          item:  elemento del array,
      *                                          index: indice del elemento
      * @param {Object}    [scope=array[i]]  Scope en que la funcion es ejecutada (referencia de `this`)
-     * @param {Boolean}   [reverse=false]   Iterar el array en reversa
      * @return {Mixed}                      `item` en caso de encontrarlo, `null` de lo contrario
      */
     $Array.findBy = function(array, fn, scope) {

@@ -4,11 +4,11 @@ define([
     /*
      * Ordena los elementos de un array
      *
-     * @param {Array}     array             Array a ordenar
+     * @param {Array}     array   Array a ordenar
      * @param {Function}  sortFn  Funcion a ejecutar que recibe los parametros
-     *                                          a: primer elemento a comparar
-     *                                          b: segundo elemento a comparar
-     * @return {Array}                    `true` en caso de no detener el ciclo, `index` de lo contrario
+     *                                a: primer elemento a comparar
+     *                                b: segundo elemento a comparar
+     * @return {Array}            `true` en caso de no detener el ciclo, `index` de lo contrario
      */
     $Array.sort = function(array, sortFn) {
         return stableSort(array, sortFn || lexicalCompare);

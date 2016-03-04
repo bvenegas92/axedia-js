@@ -9,7 +9,7 @@ define([
      * @param {Array}   array        Array
      * @param {Number}  index        Índice en el cual efectuar la operación
      * @param {Number}  removeCount  El numero de elementos a eliminar en el índice
-     * @param {Object}  items        Elementos a agregar
+     * @param {Object}  [items]        Elementos a agregar
      * @return {Array}               Array proporcionado
      */
     $Array.splice = ([].splice) ? function(array) {

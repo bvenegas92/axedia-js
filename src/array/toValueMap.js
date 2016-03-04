@@ -8,7 +8,7 @@ define([
      * @param {Mixed}   getKey                Nombre de la propiedad del elemento a usar como clave o funcion
      *                                        para extraer la clave
      * @param {Object}  [scope=array[i]]      Scope en que la funcion es ejecutada (referencia de `this`)
-     * @param {Number}  [arrayify=undefined]  `1` para crear arrays para todos los elementos o `2` para crear arrays
+     * @param {Number}  [arrayify]            `1` para crear arrays para todos los elementos o `2` para crear arrays
      *                                        para los elementos que comparten la misma key. Solo aplica cuando `getKey`
      *                                        es proporcionada.
      * @return {Object}                       El map `object`

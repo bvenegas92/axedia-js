@@ -6,7 +6,7 @@ describe("Array", function() {
     });
 
     if (Axedia.Array) {
-        if (Axedia.Array.each) {
+        /*if (Axedia.Array.each) {
             it('each debe invocar 4 veces la funcion', function() {
                 var on = {
                     each: function(item, index) {
@@ -323,6 +323,6 @@ describe("Array", function() {
                     delta: 'delta'
                 });
             });
-        }
+        }*/
     }
 });

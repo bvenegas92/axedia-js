@@ -6,9 +6,9 @@ define([
      * Retorna una copia de una parte del array proporcionado
      *
      * @param {Array}   array  Array a partir
-     * @param {Number}  begin  Índice de inicio.
+     * @param {Number}  [begin]  Índice de inicio.
      *                             *Valores negativos son desplazamientos del final del array.
-     * @param {Number}  end    Índice de fin.
+     * @param {Number}  [end]    Índice de fin.
      *                             *Los elementos copiados no incluyen el ultimo.
      *                             *Valores negativos son desplazamientos del final del array.
      *                             *Si end es omitido, todos los elementos hasta el final del array son copiados.

@@ -11,7 +11,7 @@ define([
      *                                          index: indice del elemento,
      *                                          array: el array propio
      * @param {Object}    [scope=array[i]]  Scope en que la funcion es ejecutada (referencia de `this`)
-     * @param {Boolean}   [reverse=false]   Iterar el array en reversa
+     * @param {Boolean}   [reverse]   Iterar el array en reversa
      * @return {Mixed}                    `true` en caso de no detener el ciclo, `index` de lo contrario
      */
     $Array.each = function(array, fn, scope, reverse) {
