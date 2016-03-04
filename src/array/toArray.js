@@ -3,12 +3,12 @@ define([
     './slice'
 ], function($Array) {
     /*
-     * Convierte cualquier objeto iterable en arreglo
+     * Convierte cualquier objeto iterable en array
      *
      * @param {Object}  iterable  Valor a convertir
      * @param {Number}  start    Indice del cual empezar
      * @param {Number}  end      Indice del cual terminar
-     * @return {Array}            Arreglo con el valor
+     * @return {Array}            Array con el valor
      */
     $Array.toArray = function(iterable, start, end) {
         if (!iterable || !iterable.length) {

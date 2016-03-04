@@ -3,12 +3,12 @@ define([
     './slice'
 ], function($Array) {
     /*
-     * Une multiples arreglos en uno solo con elementos unicos que existen en todos los arreglos proporcionados
+     * Une multiples arrays en uno solo con elementos unicos que existen en todos los arrays proporcionados
      *
-     * @param {Array}  array1  Arreglo numero 1
-     * @param {Array}  array2  Arreglo numero 2
-     * @param {Array}  arrayN  Arreglo numero N
-     * @return {Array}         Arreglo interseccion
+     * @param {Array}  array1  Array numero 1
+     * @param {Array}  array2  Array numero 2
+     * @param {Array}  arrayN  Array numero N
+     * @return {Array}         Array interseccion
      */
     $Array.intersect = function() {
         var intersection = [],

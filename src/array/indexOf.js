@@ -4,9 +4,9 @@ define([
     '../var/math/max'
 ], function($Array, arrayPrototype, mathMax) {
     /*
-     * Obtiene el índice de un elemento dado en el arreglo proporcionado.
+     * Obtiene el índice de un elemento dado en el array proporcionado.
      *
-     * @param {Array}   array     Arreglo en cual buscar
+     * @param {Array}   array     Array en cual buscar
      * @param {Object}  item      Elemento a buscar
      * @param {Number}  [from=0]  Indice en el cual comenzar la busqueda
      * @return {Number}           Índice del elemento o `-1` en caso de no encontrarlo

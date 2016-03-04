@@ -3,10 +3,10 @@ define([
     '../type/isEmpty'
 ], function($Array, $Type) {
     /*
-     * Remuve los elementos vacios en el arreglo de acuerdo a $Type.isEmpty
+     * Remuve los elementos vacios en el array de acuerdo a $Type.isEmpty
      *
-     * @param {Array}  array  Arreglo a filtrar
-     * @return {Array}        Arreglo sin elementos vacios
+     * @param {Array}  array  Array a filtrar
+     * @return {Array}        Array sin elementos vacios
      */
     $Array.clean = function(array) {
         var results = [],

@@ -5,7 +5,7 @@ define([
     /*
      * Obtiene el promedio de los elementos
      *
-     * @param {Array}  array  Arreglo a calcular
+     * @param {Array}  array  Array a calcular
      * @return {Number}       Promedio
      */
     $Array.mean = function(array) {

@@ -4,7 +4,7 @@ define([
     /*
      * Calcula la suma de los elementos
      *
-     * @param {Array}  array  Arreglo a calcular
+     * @param {Array}  array  Array a calcular
      * @return {Number}       Suma
      */
     $Array.sum = function(array) {

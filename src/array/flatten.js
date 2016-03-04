@@ -3,10 +3,10 @@ define([
     '../type/isArray'
 ], function($Array, $Type) {
     /*
-     * "Aplana" de manera recursiva en un arreglo de una dimensión.
+     * "Aplana" de manera recursiva en un array de una dimensión.
      *
-     * @param {Array}   array     Arreglo a aplanar
-     * @return {Array}            Arreglo de una dimension
+     * @param {Array}   array     Array a aplanar
+     * @return {Array}            Array de una dimension
      */
     $Array.flatten = function(array) {
         var worker = [];

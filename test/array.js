@@ -86,6 +86,14 @@ describe("Array", function() {
             });
         }
 
+        if (Axedia.Array.difference) {
+            it('difference debe verificar las diferencias', function() {
+                var difference = Axedia.Array.difference(items, ['alfa', 'beta']);
+
+                expect(difference).toEqual(['gamma', 'delta']);
+            });
+        }
+
         if (Axedia.Array.erase) {
             it('erase debe eliminar', function() {
                 var erase = Axedia.Array.erase(items, 1, 2);
@@ -217,6 +225,103 @@ describe("Array", function() {
                 var sum = Axedia.Array.sum([1, 2, 3]);
 
                 expect(sum).toEqual(6);
+            });
+        }
+
+        if (Axedia.Array.min) {
+            it('min debe obtener el minimo', function() {
+                var min = Axedia.Array.min([1, 2, 3]);
+
+                expect(min).toEqual(1);
+            });
+        }
+
+        if (Axedia.Array.pluck) {
+            it('pluck debe tomar la propiedad', function() {
+                var pluck = Axedia.Array.pluck([
+                    {
+                        alfa: 'a',
+                        beta: 'b'
+                    },
+                    {
+                        alfa: 'a',
+                        gamma: 'g'
+                    },
+                    {
+                        alfa: 'a',
+                        delta: 'd'
+                    }
+                ], 'alfa');
+
+                expect(pluck).toEqual(['a', 'a', 'a']);
+            });
+        }
+
+        if (Axedia.Array.push) {
+            it('push debe agregar al final', function() {
+                var push = Axedia.Array.push(items, 'epsilon');
+
+                expect(push).toEqual(['alfa', 'beta', 'gamma', 'delta', 'epsilon']);
+            });
+        }
+
+        if (Axedia.Array.remove) {
+            it('remove debe remover', function() {
+                var remove = Axedia.Array.remove(items, 'alfa');
+
+                expect(remove).toEqual(['beta', 'gamma', 'delta']);
+            });
+        }
+
+        if (Axedia.Array.some) {
+            it('some debe retornar true', function() {
+                var some = Axedia.Array.some(items, function(item) {
+                    return /alfa|beta|gamma|delta/.test(item);
+                });
+
+                expect(some).toBe(true);
+            });
+        }
+
+        if (Axedia.Array.sort) {
+            it('sort debe ordenar', function() {
+                var sort = Axedia.Array.sort(items);
+
+                expect(sort).toEqual(['alfa', 'beta', 'delta', 'gamma']);
+            });
+        }
+
+        if (Axedia.Array.splice) {
+            it('splice debe empalmar', function() {
+                Axedia.Array.splice(items, 2, 1, 'epsilon');
+
+                expect(items).toEqual(['alfa', 'beta', 'epsilon', 'delta']);
+            });
+        }
+
+        if (Axedia.Array.toMap) {
+            it('toMap debe mapear', function() {
+                var toMap = Axedia.Array.toMap(items);
+
+                expect(toMap).toEqual({
+                    alfa: 1,
+                    beta: 2,
+                    gamma: 3,
+                    delta: 4
+                });
+            });
+        }
+
+        if (Axedia.Array.toValueMap) {
+            it('toValueMap debe mapear', function() {
+                var toValueMap = Axedia.Array.toValueMap(items);
+
+                expect(toValueMap).toEqual({
+                    alfa: 'alfa',
+                    beta: 'beta',
+                    gamma: 'gamma',
+                    delta: 'delta'
+                });
             });
         }
     }

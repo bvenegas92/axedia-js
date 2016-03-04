@@ -7,8 +7,8 @@ define([
      * Es solo una forma simple para
      * Array.prototype.slice.call(array)
      *
-     * @param {Array}  array  Arreglo a clonar
-     * @return {Array}        Arreglo clonado
+     * @param {Array}  array  Array a clonar
+     * @return {Array}        Array clonado
      */
     $Array.clone = function(array) {
         return $Array.slice(array);

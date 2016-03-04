@@ -2,10 +2,10 @@ define([
     './array'
 ], function($Array) {
     /*
-     * Retorna el valor maximo en el arreglo
+     * Retorna el valor maximo en el array
      *
-     * @param {Array}     array         Arreglo en cual buscar
-     * @param {Function}  comparisonFn  Funcion a ejecutar que determina el valor maximo
+     * @param {Array}     array         Array en cual buscar
+     * @param {Function}  [comparisonFn]  Funcion a ejecutar que determina el valor maximo
      *                                      max: valor maximo actual
      *                                      item:  elemento con el cual comparar contra el maximo actual
      * @return {Object}                 Valor maximo

@@ -15,5 +15,23 @@ describe("Type", function() {
                 expect(isArray).toBe(true);
             });
         }
+
+        if (Axedia.Type.isFunction) {
+            it('isFunction debe verificar funciones', function() {
+                function fn() {
+                }
+                var isFunction = Axedia.Type.isFunction(fn);
+
+                expect(isFunction).toBe(true);
+            });
+        }
+
+        if (Axedia.Type.isIterable) {
+            it('isIterable debe verificar iterables', function() {
+                var isIterable = Axedia.Type.isIterable(['alfa', 'beta']);
+
+                expect(isIterable).toBe(true);
+            });
+        }
     }
 });

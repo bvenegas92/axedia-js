@@ -3,16 +3,16 @@ define([
     '../var/array/prototype'
 ], function($Array, arrayPrototype) {
     /*
-     * Crea un nuevo arreglo con los resultados despues de haber invocado la funcion dada
-     * en cada elemento del arreglo.
+     * Crea un nuevo array con los resultados despues de haber invocado la funcion dada
+     * en cada elemento del array.
      *
-     * @param {Array}     array             Arreglo a recorrer
+     * @param {Array}     array             Array a recorrer
      * @param {Function}  fn                Funcion a ejecutar que recibe los parametros
      *                                          item:  elemento del array,
      *                                          index: indice del elemento,
      *                                          array: el array propio
      * @param {Object}    [scope=array[i]]  Scope en que la funcion es ejecutada (referencia de `this`)
-     * @return {Array}                      Arreglo con los resultados
+     * @return {Array}                      Array con los resultados
      */
     $Array.map = ('map' in arrayPrototype) ? function(array, fn, scope) {
         return array.map(fn, scope);

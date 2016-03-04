@@ -2,12 +2,12 @@ define([
     './array'
 ], function($Array) {
     /*
-     * Remueve elementos del arreglo
+     * Remueve elementos del array
      *
-     * @param {Array}  array        Arreglo
+     * @param {Array}  array        Array
      * @param {Array}  index        Índice en el cual efectuar la operación
      * @param {Array}  removeCount  El numero de elementos a eliminar en el índice
-     * @return {Array}              Arreglo proporcionado
+     * @return {Array}              Array proporcionado
      */
     $Array.replace = ([].splice) ? function(array, index, removeCount, insert) {
         if (insert && insert.length) {

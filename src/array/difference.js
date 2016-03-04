@@ -3,11 +3,11 @@ define([
     './slice'
 ], function($Array) {
     /*
-     * Realiza una diferencia entre los elementos de ambos arreglos substrayendo los elementos de B existentes en A
+     * Realiza una diferencia entre los elementos de ambos arrays substrayendo los elementos de B existentes en A
      *
-     * @param {Array}  arrayA  Arreglo A
-     * @param {Array}  arrayB  Arreglo B
-     * @return {Array}         Arreglo con las diferencias
+     * @param {Array}  arrayA  Array A
+     * @param {Array}  arrayB  Array B
+     * @return {Array}         Array con las diferencias
      */
     $Array.difference = function(arrayA, arrayB) {
         var clone = $Array.slice(arrayA),

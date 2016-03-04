@@ -5,16 +5,16 @@ define([
     './toArray'
 ], function($Array, $Type) {
     /*
-     * Convierte un valor a arreglo, en caso de que no lo sea.
+     * Convierte un valor a array, en caso de que no lo sea.
      * Retorna:
-     * - un arreglo vacio `[]` si el valor es `null` o `undefined`
-     * - el mismo, si el valor ya es un arreglo
-     * - Una copia del arreglo si el valor es un objeto iterable
-     * - Un arreglo de un elementoel cual es el valor dado
+     * - un array vacio `[]` si el valor es `null` o `undefined`
+     * - el mismo, si el valor ya es un array
+     * - Una copia del array si el valor es un objeto iterable
+     * - Un array de un elementoel cual es el valor dado
      *
      * @param {Object}   value         Valor a convertir
-     * @param {Boolean}  newReference  Si el arreglo debe ser clon con una nueva referencia
-     * @return {Array}                 Arreglo con el valor
+     * @param {Boolean}  newReference  Si el array debe ser clon con una nueva referencia
+     * @return {Array}                 Array con el valor
      */
     $Array.from = function(value, newReference) {
         if (value === undefined || value === null) {

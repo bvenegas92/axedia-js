@@ -3,10 +3,10 @@ define([
     './indexOf'
 ], function($Array, $ArrayIndexOf) {
     /*
-     * Retorna un nuevo arreglo con elementos unicos
+     * Retorna un nuevo array con elementos unicos
      *
-     * @param {Array}  array  Arreglo a copiar
-     * @return {Array}        Arreglo con elementos únicos
+     * @param {Array}  array  Array a copiar
+     * @return {Array}        Array con elementos únicos
      */
     $Array.unique = function(array) {
         var clone = [],
