@@ -1,7 +1,7 @@
 define([
     './array'
 ], function($Array) {
-    /*
+    /**
      * Recorre un array o valor iterable y ejecuta la funcion proporcionada por cada elemento
      * pudiendo romper la iteracion al regresar `false`.
      *
@@ -10,7 +10,7 @@ define([
      *                                          item:  elemento del array,
      *                                          index: indice del elemento
      * @param {Object}    [scope=array[i]]  Scope en que la funcion es ejecutada (referencia de `this`)
-     * @return {Mixed}                      `item` en caso de encontrarlo, `null` de lo contrario
+     * @return {?Object}                    `item` en caso de encontrarlo, `null` de lo contrario
      */
     $Array.findBy = function(array, fn, scope) {
         var i = 0,

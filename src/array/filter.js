@@ -2,7 +2,7 @@ define([
     './array',
     '../var/array/prototype'
 ], function($Array, arrayPrototype) {
-    /*
+    /**
      * Crea un nuevo array con todos los elementos de los cuales la funcion proporcionada
      * devolvio un valor truthy.
      *

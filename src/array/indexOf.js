@@ -3,7 +3,7 @@ define([
     '../var/array/prototype',
     '../var/math/max'
 ], function($Array, arrayPrototype, mathMax) {
-    /*
+    /**
      * Obtiene el índice de un elemento dado en el array proporcionado.
      *
      * @param {Array}   array     Array en cual buscar

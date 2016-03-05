@@ -2,7 +2,7 @@ define([
     './array',
     '../type/isArray'
 ], function($Array, $Type) {
-    /*
+    /**
      * "Aplana" de manera recursiva en un array de una dimensión.
      *
      * @param {Array}   array     Array a aplanar

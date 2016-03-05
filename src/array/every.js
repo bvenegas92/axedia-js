@@ -2,7 +2,7 @@ define([
     './array',
     '../var/array/prototype'
 ], function($Array, arrayPrototype) {
-    /*
+    /**
      * Ejecuta la función dada una vez por cada elemente presente en el array hasta encontrar uno
      * que haga retornar un valor falsy (un valor que resulte falso cuando se convierta a booleano).
      * Si se encuentra tal elemento, el método de inmediato retorna `false`. O si fn retorna verdadero

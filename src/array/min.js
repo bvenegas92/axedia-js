@@ -1,7 +1,7 @@
 define([
     './array'
 ], function($Array) {
-    /*
+    /**
      * Retorna el valor minimo en el array
      *
      * @param {Array}     array         Array en cual buscar

@@ -2,7 +2,7 @@ define([
     './array',
     './sum'
 ], function($Array) {
-    /*
+    /**
      * Obtiene el promedio de los elementos
      *
      * @param {Array}  array  Array a calcular

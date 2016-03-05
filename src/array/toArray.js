@@ -2,7 +2,7 @@ define([
     './array',
     './slice'
 ], function($Array) {
-    /*
+    /**
      * Convierte cualquier objeto iterable en array
      *
      * @param {Object}  iterable  Valor a convertir

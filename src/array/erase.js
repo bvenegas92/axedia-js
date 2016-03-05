@@ -2,7 +2,7 @@ define([
     './array',
     './replace'
 ], function($Array) {
-    /*
+    /**
      * Remueve elementos del array
      *
      * @param {Array}   array        Array

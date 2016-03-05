@@ -4,6 +4,7 @@
         "Array",
         "Number",
         "RegExp",
-        "Type"
+        "Type",
+        "String"
     ]
 }

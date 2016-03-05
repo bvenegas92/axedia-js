@@ -1,7 +1,7 @@
 define([
     './number'
 ], function($Number) {
-    /*
+    /**
      * Valida que un valor sea numerico y lo convierte si es necesario. Regresa el valor por default en caso contrario.
      *
      * @param {Object}  value         El valor a convertir

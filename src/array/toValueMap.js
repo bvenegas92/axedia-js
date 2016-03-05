@@ -1,7 +1,7 @@
 define([
     './array'
 ], function($Array) {
-    /*
+    /**
      * Crea un map `object` usando como claves los elementos del array y como valor el elemento
      *
      * @param {Array}   array                 Array fuente

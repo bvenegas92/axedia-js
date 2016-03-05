@@ -1,7 +1,7 @@
 define([
     './array'
 ], function($Array) {
-    /*
+    /**
      * Ordena los elementos de un array
      *
      * @param {Array}     array   Array a ordenar

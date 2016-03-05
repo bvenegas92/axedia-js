@@ -4,7 +4,7 @@ define([
     './slice',
     './toArray'
 ], function($Array, $Type) {
-    /*
+    /**
      * Convierte un valor a array, en caso de que no lo sea.
      * Retorna:
      * - un array vacio `[]` si el valor es `null` o `undefined`

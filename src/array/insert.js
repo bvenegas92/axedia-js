@@ -2,7 +2,7 @@ define([
     './array',
     './replace'
 ], function($Array) {
-    /*
+    /**
      * Agrega elementos a un array
      *
      * @param {Array}   array  Array en cual incluir

@@ -1,7 +1,7 @@
 define([
     './array'
 ], function($Array) {
-    /*
+    /**
      * Calcula la suma de los elementos
      *
      * @param {Array}  array  Array a calcular

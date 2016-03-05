@@ -2,7 +2,7 @@ define([
     './array',
     './slice'
 ], function($Array) {
-    /*
+    /**
      * Realiza una diferencia entre los elementos de ambos arrays substrayendo los elementos de B existentes en A
      *
      * @param {Array}  arrayA  Array A

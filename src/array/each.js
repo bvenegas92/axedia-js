@@ -1,7 +1,7 @@
 define([
     './array'
 ], function($Array) {
-    /*
+    /**
      * Recorre un array o valor iterable y ejecuta la funcion proporcionada por cada elemento
      * pudiendo romper la iteracion al regresar `false`.
      *
@@ -11,8 +11,8 @@ define([
      *                                          index: indice del elemento,
      *                                          array: el array propio
      * @param {Object}    [scope=array[i]]  Scope en que la funcion es ejecutada (referencia de `this`)
-     * @param {Boolean}   [reverse]   Iterar el array en reversa
-     * @return {Mixed}                    `true` en caso de no detener el ciclo, `index` de lo contrario
+     * @param {Boolean}   [reverse]         Iterar el array en reversa
+     * @return {Boolean}                    `true` en caso de no detener el ciclo, `index` de lo contrario
      */
     $Array.each = function(array, fn, scope, reverse) {
         var i,

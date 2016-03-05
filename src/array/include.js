@@ -2,7 +2,7 @@ define([
     './array',
     './contains'
 ], function($Array) {
-    /*
+    /**
      * Agrega un elemento al array si aun no existe en este,
      *
      * @param {Array}   array  Array en cual incluir

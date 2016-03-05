@@ -2,13 +2,11 @@ define([
     './array',
     './slice'
 ], function($Array) {
-    /*
+    /**
      * Une multiples arrays en uno solo con elementos unicos que existen en todos los arrays proporcionados
      *
-     * @param {Array}  array1  Array numero 1
-     * @param {Array}  array2  Array numero 2
-     * @param {Array}  arrayN  Array numero N
-     * @return {Array}         Array interseccion
+     * @param {...Array}  array  Arrays a intersectar
+     * @return {Array}           Array interseccion
      */
     $Array.intersect = function() {
         var intersection = [],

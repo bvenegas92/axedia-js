@@ -3,7 +3,7 @@ define([
     '../var/math/min',
     ''
 ], function($Array, mathMin) {
-    /*
+    /**
      * Remueve elementos del array en el indice especifico
      *
      * @param {Array}   array  Array

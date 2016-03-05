@@ -2,7 +2,7 @@ define([
     './array',
     '../type/isEmpty'
 ], function($Array, $Type) {
-    /*
+    /**
      * Remuve los elementos vacios en el array de acuerdo a $Type.isEmpty
      *
      * @param {Array}  array  Array a filtrar

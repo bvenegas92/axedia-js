@@ -1,7 +1,7 @@
 define([
     './array'
 ], function($Array) {
-    /*
+    /**
      * Toma el valor de una propiedad de cada elemento en el array y arma un nuevo
      * array con estos valores.
      *

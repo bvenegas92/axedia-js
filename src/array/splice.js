@@ -3,7 +3,7 @@ define([
     './replace',
     './slice'
 ], function($Array) {
-    /*
+    /**
      * Remplaza elementos del array
      *
      * @param {Array}   array        Array
@@ -12,7 +12,7 @@ define([
      * @param {Object}  [items]        Elementos a agregar
      * @return {Array}               Array proporcionado
      */
-    $Array.splice = ([].splice) ? function(array) {
+    $Array.splice = ([].splice) ? function(array, index, removeCount) {
         return array.splice.apply(array, $Array.slice(arguments, 1));
     } : function(array, index, removeCount) {
         var pos = fixArrayIndex(array, index),

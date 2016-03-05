@@ -2,7 +2,7 @@ define([
     './array',
     './indexOf'
 ], function($Array, $ArrayIndexOf) {
-    /*
+    /**
      * Retorna un nuevo array con elementos unicos
      *
      * @param {Array}  array  Array a copiar

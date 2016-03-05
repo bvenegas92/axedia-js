@@ -2,7 +2,7 @@ define([
     './array',
     './indexOf',
 ], function($Array) {
-    /*
+    /**
      * Verifica si un elemento se encuentra en el array proporcionado.
      *
      * @param {Array}   array  Array en cual buscar

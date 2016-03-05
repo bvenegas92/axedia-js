@@ -1,7 +1,7 @@
 define([
     './number'
 ], function($Number) {
-    /*
+    /**
      * Corrige numeros flotantes con punto decimal que tienen un overflow a un valor no-preciso debido
      * a su naturaleza de numeros flotantes, por ejemplo: 0.1 + 0.2
      *
