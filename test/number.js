@@ -6,7 +6,7 @@ describe("Number", function() {
     });
 
     if (Axedia.Number) {
-        if (Axedia.Number.clipIndices) {
+        /*if (Axedia.Number.clipIndices) {
             it('clipIndices debe normalizar los indices', function() {
                 var clipIndices = Axedia.Number.clipIndices(10, [2, -4]);
 
@@ -45,6 +45,6 @@ describe("Number", function() {
 
                 expect(newNum).toBeGreaterThan(4);
             });
-        }
+        }*/
     }
 });

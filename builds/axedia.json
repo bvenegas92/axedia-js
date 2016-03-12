@@ -5,6 +5,7 @@
         "Number",
         "RegExp",
         "Type",
-        "String"
+        "String",
+        "Date"
     ]
 }

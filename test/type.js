@@ -1,6 +1,6 @@
 describe("Type", function() {
     if (Axedia.Type) {
-        if (Axedia.Type.isEmpty) {
+        /*if (Axedia.Type.isEmpty) {
             it('isEmpty debe verificar vacios', function() {
                 var isEmpty = Axedia.Type.isEmpty('');
 
@@ -32,6 +32,6 @@ describe("Type", function() {
 
                 expect(isIterable).toBe(true);
             });
-        }
+        }*/
     }
 });
