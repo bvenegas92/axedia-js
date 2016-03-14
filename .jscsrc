@@ -1,7 +1,12 @@
 {
     "preset": "google",
     "validateIndentation": 4,
+    "requireCurlyBraces": false,
     "disallowMultipleVarDecl": false,
-    "maximumLineLength": 120,
+    "maximumLineLength": {
+        "value": 120,
+        "allExcept": ["regex", "comments", "urlComments", "functionSignature", "require"]
+    },
+    "validateQuoteMarks": false,
     "excludeFiles": [ "src/intro.js", "src/outro.js", "src/tmp_builder.js"]
 }

@@ -1,7 +1,6 @@
 define([
     './array',
-    '../var/math/min',
-    ''
+    '../var/math/min'
 ], function($Array, mathMin) {
     /**
      * Remueve elementos del array en el indice especifico

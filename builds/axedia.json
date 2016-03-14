@@ -1,11 +1,6 @@
 {
     "name": "axedia.js",
     "modules": [
-        "Array",
-        "Number",
-        "RegExp",
-        "Type",
-        "String",
         "Date"
     ]
 }

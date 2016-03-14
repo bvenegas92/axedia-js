@@ -16,6 +16,14 @@ describe("Type", function() {
             });
         }
 
+        if (Axedia.Type.isDate) {
+            it('isDate debe verificar dates', function() {
+                var value = Axedia.Type.isDate(new Date());
+
+                expect(value).toBe(true);
+            });
+        }
+
         if (Axedia.Type.isFunction) {
             it('isFunction debe verificar funciones', function() {
                 function fn() {
