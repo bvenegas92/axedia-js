@@ -1,6 +1,6 @@
 {
     "name": "axedia.js",
     "modules": [
-        "Date"
+        "JSON"
     ]
 }

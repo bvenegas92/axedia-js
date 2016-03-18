@@ -2,7 +2,7 @@ define([
     './object'
 ], function($Object) {
     /**
-     * Copia todas las propiedades de `config` a `object` su no existen en `object`
+     * Copia todas las propiedades de `config` a `object` si no existen en `object`
      *
      * @param  {Object}  object  Objecto
      * @param  {Object}  config  Propiedades

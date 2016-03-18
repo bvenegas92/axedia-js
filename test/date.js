@@ -6,7 +6,7 @@ describe("Date", function() {
     });
 
     if (Axedia.Date) {
-        if (Axedia.Date.add) {
+        /*if (Axedia.Date.add) {
             it('add debe agregar tiempo', function() {
                 var value = Axedia.Date.add(date, Axedia.Date.DAY, 1);
 
@@ -200,6 +200,6 @@ describe("Date", function() {
 
                 expect(value).toBe(true);
             });
-        }
+        }*/
     }
 });

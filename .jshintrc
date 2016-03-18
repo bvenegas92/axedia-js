@@ -8,6 +8,7 @@
     "noarg": true,
     "undef": true,
     "unused": false,
+    "evil": true,
 
     "node": true,
     "globals": {
