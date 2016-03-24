@@ -7,7 +7,7 @@ define([
      *
      * @param {Array}     array             Array a recorrer
      * @param {Function}  fn                Funcion a ejecutar que recibe los parametros
-     *                                          item:  elemento del array,
+     * @param {String}    fn.key                                          item:  elemento del array,
      *                                          index: indice del elemento,
      *                                          array: el array propio
      * @param {Object}    [scope=array[i]]  Scope en que la funcion es ejecutada (referencia de `this`)
