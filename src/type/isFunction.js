@@ -3,7 +3,7 @@ define([
     '../var/object/toString'
 ], function($Type, objectToString, document) {
     /**
-     * Verifica si un valor es una funcion de JavaScript
+     * Verifica si `value` es una funcion de JavaScript
      *
      * @param {Object}  value  Objeto a evaluar
      * @return {Boolean}       `true` si es funcion, `false` de lo contrario.

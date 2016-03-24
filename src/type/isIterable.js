@@ -4,7 +4,7 @@ define([
     '../regexp/iterable'
 ], function($Type, objectToString, $RegExp) {
     /**
-     * Verifica si un valor es iterable, esto es si sus elementos son accesibles usando
+     * Verifica si `value` es iterable, esto es si sus elementos son accesibles usando
      * notacion de array con indices numericos.
      *
      * Arrays y `arguments` son iterables, tambien lo son colecciones HTML como `NodeList` y

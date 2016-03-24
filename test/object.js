@@ -14,7 +14,7 @@ describe("Object", function() {
     });
 
     if (Axedia.Object) {
-        if (Axedia.Object.chain) {
+        /*if (Axedia.Object.chain) {
             it('chain debe hacer prototype', function() {
                 var value = Axedia.Object.chain(obj);
 
@@ -33,6 +33,14 @@ describe("Object", function() {
         if (Axedia.Object.clone) {
             it('clone debe clonar', function() {
                 var value = Axedia.Object.clone({number: 2});
+
+                expect(value).toEqual({number: 2});
+            });
+        }
+
+        if (Axedia.Object.copy) {
+            it('copy debe copiar', function() {
+                var value = Axedia.Object.copy({number: 2});
 
                 expect(value).toEqual({number: 2});
             });
@@ -108,6 +116,6 @@ describe("Object", function() {
 
                 expect(value).toEqual({alfa: 'a', beta: 1});
             });
-        }
+        }*/
     }
 });

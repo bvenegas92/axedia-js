@@ -3,7 +3,7 @@ define([
     './isArray'
 ], function($Type) {
     /**
-     * Verifica si un valor es vacio. Se considera vacio los siguientes casos:
+     * Verifica si ``value` es vacio. Se considera vacio los siguientes casos:
      *
      * - `null`
      * - `undefined`
