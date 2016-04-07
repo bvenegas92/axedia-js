@@ -1,6 +1,6 @@
-describe("String", function() {
+/*describe("String", function() {
     if (Axedia.String) {
-        /*if (Axedia.String.capitalize) {
+        if (Axedia.String.capitalize) {
             it('capitalize debe convertir a mayuscula', function() {
                 var capitalize = Axedia.String.capitalize('alfa');
 
@@ -94,6 +94,7 @@ describe("String", function() {
 
                 expect(uncapitalize).toEqual('alfa');
             });
-        }*/
+        }
     }
 });
+*/

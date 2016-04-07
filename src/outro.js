@@ -1,3 +1,3 @@
 
-    global.Axedia = global.Axedia || axedia;
+    GLOBAL.Axedia = GLOBAL.Axedia || axedia;
 })(this);

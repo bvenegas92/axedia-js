@@ -1,4 +1,4 @@
-describe("JSON", function() {
+/*describe("JSON", function() {
     var obj;
 
     beforeEach(function() {
@@ -13,7 +13,7 @@ describe("JSON", function() {
     });
 
     if (Axedia.JSON) {
-        /*if (Axedia.JSON.encode) {
+        if (Axedia.JSON.encode) {
             it('encode debe codificar', function() {
                 var value = Axedia.JSON.encode(obj);
 
@@ -27,6 +27,7 @@ describe("JSON", function() {
 
                 expect(value).toEqual({n: 1, s: "str"});
             });
-        }*/
+        }
     }
 });
+*/

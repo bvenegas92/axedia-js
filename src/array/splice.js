@@ -1,8 +1,10 @@
 define([
     './array',
     './replace',
-    './slice'
-], function($Array) {
+    './slice',
+    '../var/math/max',
+    '../var/math/min'
+], function($Array, mathMax, mathMin) {
     /**
      * Remplaza elementos del array
      *
@@ -27,8 +29,8 @@ define([
         return removed;
 
         function fixArrayIndex(array, index) {
-            return (index < 0) ? Math.max(0, array.length + index)
-                               : Math.min(array.length, index);
+            return (index < 0) ? mathMax(0, array.length + index)
+                               : mathMin(array.length, index);
         }
     };
 });

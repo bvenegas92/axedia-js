@@ -1,4 +1,4 @@
-describe("Type", function() {
+/*describe("Type", function() {
     if (Axedia.Type) {
         if (Axedia.Type.isArray) {
             it('isArray debe verificar arrays', function() {
@@ -108,3 +108,4 @@ describe("Type", function() {
         }
     }
 });
+*/

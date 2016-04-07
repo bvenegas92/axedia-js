@@ -1,4 +1,4 @@
-describe("Object", function() {
+/*describe("Object", function() {
     var obj;
 
     beforeEach(function() {
@@ -14,7 +14,7 @@ describe("Object", function() {
     });
 
     if (Axedia.Object) {
-        /*if (Axedia.Object.chain) {
+        if (Axedia.Object.chain) {
             it('chain debe hacer prototype', function() {
                 var value = Axedia.Object.chain(obj);
 
@@ -116,6 +116,7 @@ describe("Object", function() {
 
                 expect(value).toEqual({alfa: 'a', beta: 1});
             });
-        }*/
+        }
     }
 });
+*/

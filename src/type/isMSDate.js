@@ -1,7 +1,8 @@
 define([
     './type',
-    './isString'
-], function($Type) {
+    './isString',
+    '../regExp/msDate'
+], function($Type, $RegExp) {
     /**
      * Verifica si `value` es MS Date
      *
@@ -9,10 +10,9 @@ define([
      * @return {Boolean}        `true` si es MS Date, `false` de lo contrario
      */
     $Type.isMSDate = function(value) {
-        var MSDateRe = /^\\?\/Date\(([-+])?(\d+)(?:[+-]\d{4})?\)\\?\/$/;
         if (!$Type.isString(value)) {
             return false;
         }
-        return MSDateRe.test(value);
+        return $RegExp.MSDATE.test(value);
     };
 });
