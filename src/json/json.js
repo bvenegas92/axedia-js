@@ -1,5 +1,5 @@
 define([
     '../core',
-], function(axedia) {
-    var $JSON = axedia.JSON = {};
+], function($) {
+    var $JSON = $.JSON = {};
 });

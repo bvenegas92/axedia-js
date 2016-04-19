@@ -7,6 +7,14 @@ describe("Class", function() {
                 expect(value).toEqual(null);
             });
         }
+
+        if (Axedia.Class.validateClassName) {
+            it('validateClassName debe validar', function() {
+                var value = Axedia.Class.validateClassName('Axedia.Array.noClass');
+
+                expect(value).toBe(true);
+            });
+        }
     }
 });
 

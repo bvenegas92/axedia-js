@@ -1,1 +1,1 @@
-(function(GLOBAL){
+(function(GLOBAL, BASE){

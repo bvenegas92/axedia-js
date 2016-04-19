@@ -1,3 +1,3 @@
 
-    GLOBAL.Axedia = GLOBAL.Axedia || axedia;
-})(this);
+    GLOBAL[BASE] = GLOBAL[BASE] || $;
+})(this, 'Axedia');

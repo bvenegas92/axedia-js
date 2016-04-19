@@ -1,5 +1,5 @@
 define([
     '../core',
-], function(axedia) {
-    var $RegExp = axedia.RegExp = {};
+], function($) {
+    var $RegExp = $.RegExp = {};
 });

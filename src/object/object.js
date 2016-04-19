@@ -1,5 +1,5 @@
 define([
     '../core',
-], function(axedia) {
-    var $Object = axedia.Object = {};
+], function($) {
+    var $Object = $.Object = {};
 });
