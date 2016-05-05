@@ -1,15 +1,15 @@
 define([
-    './string'
-], function($String) {
+    "./string"
+], function() {
     /**
      * Verifica si un string termina con determinado substring
      *
-     * @param {String}   s           String a verificar
-     * @param {String}   end         Substring a verificar
-     * @param {Boolean}  ignoreCase  Ignorar mayusculas
-     * @return {Boolean}             `true` si termina con el substring, `false` de lo contrario
+     * @param {String} s String a verificar
+     * @param {String} end Substring a verificar
+     * @param {Boolean} ignoreCase Ignorar mayusculas
+     * @return {Boolean} `true` si termina con el substring, `false` de lo contrario
      */
-    $String.endsWith = function(s, end, ignoreCase) {
+    $.String.endsWith = function(s, end, ignoreCase) {
         var result;
         if (s === null || s === undefined || end === null || end === undefined) {
             return false;

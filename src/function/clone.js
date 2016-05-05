@@ -1,15 +1,15 @@
 define([
-    './function'
-], function($Function) {
+    "./function"
+], function() {
     /**
      * Crea un clone de la funcion proporcionada
      *
-     * @param  {Function}  method  Funcion a clonar
-     * @return {Function}          Funcion clonada
+     * @param {Function} fn Funcion a clonar
+     * @return {Function} Funcion clonada
      */
-    $Function.clone = function(method) {
+    $.Function.clone = function(fn) {
         return function() {
-            return method.apply(this, arguments);
+            return fn.apply(this, arguments);
         };
     };
 });

@@ -1,7 +1,6 @@
 define([
-    './object',
-    '../var/object/toString'
-], function($Object, objectToString) {
+    "./object",
+], function() {
     /**
      * Clona las propiedades simples de un objeto incluyendo:
      * - Array
@@ -9,10 +8,10 @@ define([
      * - DOM Nodes
      * - Date
      *
-     * @param  {Object} item  Objeto a clonar
-     * @return {Object}       Clon del objeto
+     * @param {Object} item Objeto a clonar
+     * @return {Object} Clon del objeto
      */
-    $Object.clone = function(item) {
+    $.Object.clone = function(item) {
         if (item === null || item === undefined) {
             return item;
         }
@@ -24,30 +23,30 @@ define([
             return item.cloneNode(true);
         }
 
-        var type = objectToString.call(item),
+        var type = Object.prototype.toString.call(item),
             i, j, k, clone, key;
 
         // Date
-        if (type === '[object Date]') {
+        if (type === "[object Date]") {
             return new Date(item.getTime());
         }
 
         // Array
-        if (type === '[object Array]') {
+        if (type === "[object Array]") {
             i = item.length;
 
             clone = [];
 
             while (i--) {
-                clone[i] = $Object.clone(item[i]);
+                clone[i] = $.Object.clone(item[i]);
             }
         }
         // Object
-        else if (type === '[object Object]' && item.constructor === Object) {
+        else if (type === "[object Object]" && item.constructor === Object) {
             clone = {};
 
             for (key in item) {
-                clone[key] = $Object.clone(item[key]);
+                clone[key] = $.Object.clone(item[key]);
             }
         }
 

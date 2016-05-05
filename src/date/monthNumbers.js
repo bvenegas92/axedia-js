@@ -1,12 +1,12 @@
 define([
-    './date'
-], function($Date) {
+    "./date"
+], function() {
     /**
      * Numero de los meses
      *
      * @type {Object}
      */
-    $Date.monthNumbers = {
+    $.Date.monthNumbers = {
         January: 0,
         Jan: 0,
         February: 1,

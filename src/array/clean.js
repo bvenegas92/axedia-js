@@ -1,14 +1,14 @@
 define([
-    './array',
-    '../type/isEmpty'
-], function($Array, $Type) {
+    "./array",
+    "../type/isEmpty"
+], function() {
     /**
-     * Remuve los elementos vacios en el array de acuerdo a $Type.isEmpty
+     * Remueve los elementos vacios en el array de acuerdo a `Type.isEmpty`
      *
-     * @param {Array}  array  Array a filtrar
-     * @return {Array}        Array sin elementos vacios
+     * @param {Array} array Array a filtrar
+     * @return {Array} Array sin elementos vacios
      */
-    $Array.clean = function(array) {
+    $.Array.clean = function(array) {
         var results = [],
             i = 0,
             ln = array.length,
@@ -17,7 +17,7 @@ define([
         for (; i < ln; i++) {
             item = array[i];
 
-            if (!$Type.isEmpty(item)) {
+            if (!$.Type.isEmpty(item)) {
                 results.push(item);
             }
         }

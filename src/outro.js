@@ -1,3 +1,1 @@
-
-    GLOBAL[BASE] = GLOBAL[BASE] || $;
-})(this, 'Axedia');
+})(typeof window !== "undefined" ? window : this, "window");

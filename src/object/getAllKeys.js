@@ -1,13 +1,13 @@
 define([
-    './object'
-], function($Object) {
+    "./object"
+], function() {
     /**
      * Obtiene todos los nombres de las propiedades del objecto.
      *
-     * @param  {Object} object  Objeto
-     * @return {Array}       Array de nombres de  las propiedades
+     * @param {Object} object Objeto
+     * @return {Array} Array de nombres de  las propiedades
      */
-    $Object.getAllKeys = function(object) {
+    $.Object.getAllKeys = function(object) {
         var keys = [],
             property;
 

@@ -1,16 +1,16 @@
 define([
-    './array'
-], function($Array) {
+    "./array"
+], function() {
     /**
      * Remueve elementos del array
      *
-     * @param {Array}  array        Array
-     * @param {Array}  index        Índice en el cual efectuar la operación
-     * @param {Array}  removeCount  El numero de elementos a eliminar en el índice
-     * @param {Array}  insert       Array de elementos a insertar en el indice
-     * @return {Array}              Array proporcionado
+     * @param {Array} array Array
+     * @param {Array} index Índice en el cual efectuar la operación
+     * @param {Array} removeCount El numero de elementos a eliminar en el índice
+     * @param {Array} insert Array de elementos a insertar en el indice
+     * @return {Array} Array proporcionado
      */
-    $Array.replace = ([].splice) ? function(array, index, removeCount, insert) {
+    $.Array.replace = ([].splice) ? function(array, index, removeCount, insert) {
         if (insert && insert.length) {
             if (index === 0 && !removeCount) {
                 array.unshift.apply(array, insert);
@@ -49,7 +49,7 @@ define([
                                                  insert=[a,b,c]
 
     In case A, it is obvious that copying of [4,5,6,7] must be left-to-right so
-    that we don't end up with [0,1,6,7,6,7]. In case B, we have the opposite; we
+    that we don"t end up with [0,1,6,7,6,7]. In case B, we have the opposite; we
     must go right-to-left or else we would end up with [0,1,a,b,c,4,4,4,4].
     */
     function(array, index, removeCount, insert) {

@@ -1,15 +1,15 @@
 define([
-    './number'
-], function($Number) {
+    "./number"
+], function() {
     /**
      * Limita un numero al intervalo [min, max]
      *
-     * @param {Number}  number  Numero a limitar
-     * @param {Number}  min     Minimo del intervalo
-     * @param {Number}  max     Maximo del intervalo
-     * @return {Number}         Numero limitado
+     * @param {Number} number Numero a limitar
+     * @param {Number} min Minimo del intervalo
+     * @param {Number} max Maximo del intervalo
+     * @return {Number} Numero limitado
      */
-    $Number.constrain = function(number, min, max) {
+    $.Number.constrain = function(number, min, max) {
         number = parseFloat(number);
 
         if (min === null) {

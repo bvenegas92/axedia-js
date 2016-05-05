@@ -1,13 +1,13 @@
 define([
-    './object'
-], function($Object) {
+    "./object"
+], function() {
     /**
      * Retorna un nuevo objecto cono `object` como prototype
      *
-     * @param  {Object}  object  Objeto a usar como prototype
-     * @return {Object}          Nuevo Objeto
+     * @param {Object} object Objeto a usar como prototype
+     * @return {Object} Nuevo Objeto
      */
-    $Object.chain = Object.create || (function(object) {
+    $.Object.chain = Object.create || (function(object) {
         var Proto = function() {};
 
         return function(object) {

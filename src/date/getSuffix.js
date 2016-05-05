@@ -1,13 +1,13 @@
 define([
-    './date'
-], function($Date) {
+    "./date"
+], function() {
     /**
      * Obtiene el subfijo en ingles del dia
      *
-     * @param  {Date} date  Fecha
-     * @return {String}     Subfijo en ingles
+     * @param {Date} date Fecha
+     * @return {String} Subfijo en ingles
      */
-    $Date.getSuffix  = function(date) {
+    $.Date.getSuffix  = function(date) {
         switch (date.getDate()) {
             case 1:
             case 21:

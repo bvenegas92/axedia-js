@@ -1,13 +1,13 @@
 define([
-    './date'
-], function($Date) {
+    "./date"
+], function() {
     /**
      * Obtiene la abreviacion de la zona horaria de `date`
      *
-     * @param {Date}  date  Fecha
-     * @return {String}     Zona horaria
+     * @param {Date} date Fecha
+     * @return {String} Zona horaria
      */
-    $Date.getTimezone = function(date) {
+    $.Date.getTimezone = function(date) {
         // <ExtJS>
         // the following list shows the differences between date strings from different browsers on a WinXP SP2
         // machine from an Asian locale:
@@ -26,7 +26,7 @@ define([
         // timezone offset portion of date string
         // step 3: remove all non uppercase characters found in step 1 and 2
         return date.toString()
-            .replace(/^.* (?:\((.*)\)|([A-Z]{1,5})(?:[\-+][0-9]{4})?(?: -?\d+)?)$/, '$1$2')
-            .replace(/[^A-Z]/g, '');
+            .replace(/^.* (?:\((.*)\)|([A-Z]{1,5})(?:[\-+][0-9]{4})?(?: -?\d+)?)$/, "$1$2")
+            .replace(/[^A-Z]/g, "");
     };
 });

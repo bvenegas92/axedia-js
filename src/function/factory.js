@@ -1,14 +1,14 @@
 define([
-    './function',
-    '../var/array/slice'
-], function($Function, arraySlice) {
+    "./function",
+    "../var/array/slice"
+], function() {
     /**
      * Crea nuevas funciones ejecutando el codigo de los parametros
      *
-     * @return {Function}  Nueva Funcion
+     * @return {Function} Nueva Funcion
      */
-    $Function.factory = function() {
-        var args = arraySlice.call(arguments),
+    $.Function.factory = function() {
+        var args = Array.prototype.slice.call(arguments),
             ln;
 
         return Function.prototype.constructor.apply(Function.prototype, args);

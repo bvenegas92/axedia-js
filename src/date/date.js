@@ -1,5 +1,10 @@
 define([
-    '../core',
-], function($) {
-    var $Date = $.Date = {};
+    "../core",
+], function() {
+    /**
+     * Crea o referencía el objeto o funcion `Date`
+     *
+     * @type {Object|Function}
+     */
+    $.Date = $.Date || {};
 });

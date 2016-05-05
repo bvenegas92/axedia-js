@@ -1,16 +1,16 @@
 define([
-    './array'
-], function($Array) {
+    "./array"
+], function() {
     /**
      * Retorna el valor minimo en el array
      *
-     * @param {Array}     array         Array en cual buscar
-     * @param {Function}  [comparisonFn]  Funcion a ejecutar que determina el valor maximo
-     *                                      min: valor minimo actual
-     *                                      item:  elemento con el cual comparar contra el minimo actual
-     * @return {Object}                 Valor minimo
+     * @param {Array} array Array en cual buscar
+     * @param {Function} [comparisonFn] Funcion a ejecutar que determina el valor minimo
+     * @param {Object} comparisonFn.min Valor minimo actual
+     * @param {Object} comparisonFn.item Elemento con el cual comparar contra el minimo actual
+     * @return {Object} Valor minimo
      */
-    $Array.min = function(array, comparisonFn) {
+    $.Array.min = function(array, comparisonFn) {
         var min = array[0],
             i, ln, item;
 

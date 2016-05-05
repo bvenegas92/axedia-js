@@ -1,10 +1,10 @@
 define([
-    './regexp'
-], function($RegExp) {
+    "./regexp"
+], function() {
     /**
      * Objeto Iterable
      *
      * @type {RegExp}
      */
-    $RegExp.ITERABLE = /\[object\s*(?:Array|Arguments|\w*Collection|\w*List|HTML\s+document\.all\s+class)\]/;
+    $.RegExp.ITERABLE = /\[object\s*(?:Array|Arguments|\w*Collection|\w*List|HTML\s+document\.all\s+class)\]/;
 });

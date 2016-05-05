@@ -1,16 +1,18 @@
 define([
-    './array',
-    './slice'
-], function($Array) {
+    "./array",
+    "./slice",
+    "./unique",
+    "./erase"
+], function() {
     /**
      * Une multiples arrays en uno solo con elementos unicos que existen en todos los arrays proporcionados
      *
-     * @param {...Array}  array  Arrays a intersectar
-     * @return {Array}           Array interseccion
+     * @param {...Array} array Arrays a intersectar
+     * @return {Array} Array interseccion
      */
-    $Array.intersect = function() {
+    $.Array.intersect = function() {
         var intersection = [],
-            arrays = $Array.slice(arguments),
+            arrays = $.Array.slice(arguments),
             arraysLength,
             array,
             arrayLength,
@@ -37,12 +39,12 @@ define([
             }
         }
 
-        minArray = $Array.unique(minArray);
-        $Array.erase(arrays, minArrayIndex, 1);
+        minArray = $.Array.unique(minArray);
+        $.Array.erase(arrays, minArrayIndex, 1);
 
         // <ExtJS>
-        // Use the smallest unique'd array as the anchor loop. If the other array(s) do contain
-        // an item in the small array, we're likely to find it before reaching the end
+        // Use the smallest unique"d array as the anchor loop. If the other array(s) do contain
+        // an item in the small array, we"re likely to find it before reaching the end
         // of the inner loop and can terminate the search early.
         minArrayLength = minArray.length;
         arraysLength = arrays.length;

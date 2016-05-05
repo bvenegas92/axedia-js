@@ -1,10 +1,10 @@
 define([
-    './date',
-], function($Date) {
+    "./date",
+], function() {
     /**
      * Constante de intervalo
      *
      * @type {String}
      */
-    $Date.DAY = 'd';
+    $.Date.DAY = "d";
 });

@@ -1,10 +1,10 @@
 define([
-    './regexp'
-], function($RegExp) {
+    "./regexp"
+], function() {
     /**
-     * Espacios (i.e. ' ', \t, \n, \r, \v) al inicio y fin
+     * Espacios (i.e. " ", \t, \n, \r, \v) al inicio y fin
      *
      * @type {RegExp}
      */
-    $RegExp.SPACES_TRIM = /^\s+|\s+$/g;
+    $.RegExp.SPACES_TRIM = /^\s+|\s+$/g;
 });

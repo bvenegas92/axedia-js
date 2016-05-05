@@ -1,10 +1,10 @@
 define([
-    './regexp'
-], function($RegExp) {
+    "./regexp"
+], function() {
     /**
      * MS Date
      *
      * @type {RegExp}
      */
-    $RegExp.MSDATE = /^\\?\/Date\(([-+])?(\d+)(?:[+-]\d{4})?\)\\?\/$/;
+    $.RegExp.MSDATE = /^\\?\/Date\(([-+])?(\d+)(?:[+-]\d{4})?\)\\?\/$/;
 });

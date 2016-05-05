@@ -1,16 +1,16 @@
 define([
-    './array'
-], function($Array) {
+    "./array"
+], function() {
     /**
      * Retorna el valor maximo en el array
      *
-     * @param {Array}     array         Array en cual buscar
-     * @param {Function}  [comparisonFn]  Funcion a ejecutar que determina el valor maximo
-     *                                      max: valor maximo actual
-     *                                      item:  elemento con el cual comparar contra el maximo actual
-     * @return {Object}                 Valor maximo
+     * @param {Array} array Array en cual buscar
+     * @param {Function} [comparisonFn] Funcion a ejecutar que determina el valor maximo
+     * @param {Object} comparisonFn.max Valor maximo actual
+     * @param {Object} comparisonFn.item Elemento con el cual comparar contra el maximo actual
+     * @return {Object} Valor maximo
      */
-    $Array.max = function(array, comparisonFn) {
+    $.Array.max = function(array, comparisonFn) {
         var max = array[0],
             i, ln, item;
 

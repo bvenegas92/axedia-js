@@ -1,4 +1,4 @@
-/*describe("JSON", function() {
+describe("JSON", function() {
     var obj;
 
     beforeEach(function() {
@@ -12,22 +12,19 @@
         }
     });
 
-    if (Axedia.JSON) {
-        if (Axedia.JSON.encode) {
-            it('encode debe codificar', function() {
-                var value = Axedia.JSON.encode(obj);
+    if (JSON.decode) {
+        it('encode debe decodificar', function() {
+            var value = JSON.decode('{"n": 1, "s": "str"}');
 
-                expect(typeof value).toEqual('string');
-            });
-        }
+            expect(value).toEqual({n: 1, s: "str"});
+        });
+    }
 
-        if (Axedia.JSON.decode) {
-            it('encode debe decodificar', function() {
-                var value = Axedia.JSON.decode('{"n": 1, "s": "str"}');
+    if (JSON.encode) {
+        it('encode debe codificar', function() {
+            var value = JSON.encode(obj);
 
-                expect(value).toEqual({n: 1, s: "str"});
-            });
-        }
+            expect(typeof value).toEqual('string');
+        });
     }
 });
-*/

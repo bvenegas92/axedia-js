@@ -1,13 +1,13 @@
 define([
-    './object'
-], function($Object) {
+    "./object"
+], function() {
     /**
      * Obtiene el numero total de propiedades propias del objeto.
      *
-     * @param  {Object} object  Objeto
-     * @return {Number}         Numero de propiedades
+     * @param {Object} object Objeto
+     * @return {Number} Numero de propiedades
      */
-    $Object.getSize = function(object) {
+    $.Object.getSize = function(object) {
         var size = 0,
             property;
 

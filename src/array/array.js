@@ -1,5 +1,10 @@
 define([
-    '../core',
-], function($) {
-    var $Array = $.Array = {};
+    "../core",
+], function() {
+    /**
+     * Crea o referencía el objeto o funcion `Array`
+     *
+     * @type {Object|Function}
+     */
+    $.Array = $.Array || {};
 });

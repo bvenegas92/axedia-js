@@ -1,16 +1,16 @@
 define([
-    './array',
-    './slice',
-    './unique'
-], function($Array) {
+    "./array",
+    "./slice",
+    "./unique"
+], function() {
     /**
      * Une multiples arrays en uno solo con elementos unicos
      *
-     * @param {...Array}  array  Arrays a unir
-     * @return {Array}            Array unido
+     * @param {...Array} array Arrays a unir
+     * @return {Array} Array unido
      */
-    $Array.merge = function() {
-        var args = $Array.slice(arguments),
+    $.Array.merge = function() {
+        var args = $.Array.slice(arguments),
             array = [],
             i, ln;
 
@@ -18,6 +18,6 @@ define([
             array = array.concat(args[i]);
         }
 
-        return $Array.unique(array);
+        return $.Array.unique(array);
     };
 });

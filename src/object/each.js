@@ -1,17 +1,17 @@
 define([
-    './object'
-], function($Object) {
+    "./object"
+], function() {
     /**
-     * Iteraciona en `object` y ejecuta `fn` por cada iteracion
+     * Iteraciona `object` y ejecuta `fn` por cada iteracion
      *
-     * @param  {Object}  object  Objeto a iterar
-     * @param  {Function}  fn     Funcion a ejecutar que recibe los parametros
-*                                    item:  elemento del array,
-*                                    index: indice del elemento,
-*                                    object: el array propio
-     * @param  {Object}  scope   Scope en que la funcion es ejecutada (referencia de `this`)
+     * @param {Object} object Objeto a iterar
+     * @param {Function} fn Funcion a ejecutar
+     * @param {Function} fn.value Valor de la propiedad
+     * @param {Function} fn.key Propiedad
+     * @param {Function} fn.object El objeto mismo
+     * @param {Object} [scope] Scope en que la funcion es ejecutada (referencia de `this`)
      */
-    $Object.each = function(object, fn, scope) {
+    $.Object.each = function(object, fn, scope) {
         var i, property;
 
         if (object) {

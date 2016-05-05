@@ -1,22 +1,21 @@
 define([
-    './array',
-    './slice'
-], function($Array) {
+    "./array"
+], function() {
     /**
      * Convierte cualquier objeto iterable en array
      *
-     * @param {Object}  iterable  Valor a convertir
-     * @param {Number}  start    Indice del cual empezar
-     * @param {Number}  end      Indice del cual terminar
-     * @return {Array}            Array con el valor
+     * @param {Object} iterable Valor a convertir
+     * @param {Number} start Indice del cual empezar
+     * @param {Number} end Indice del cual terminar
+     * @return {Array} Array con el valor
      */
-    $Array.toArray = function(iterable, start, end) {
+    $.Array.toArray = function(iterable, start, end) {
         if (!iterable || !iterable.length) {
             return [];
         }
 
-        if (typeof iterable === 'string') {
-            iterable = iterable.split('');
+        if (typeof iterable === "string") {
+            iterable = iterable.split("");
         }
 
         var array = [],

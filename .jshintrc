@@ -12,8 +12,12 @@
 
     "node": true,
     "globals": {
+        "$": true,
+        "global": true,
+        "namespace": true,
         "window": true,
-        "JSON": false,
+        "document": true,
+        "JSON": true,
         "define": true,
         "module": true
     }

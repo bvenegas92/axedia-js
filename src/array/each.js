@@ -1,20 +1,20 @@
 define([
-    './array'
-], function($Array) {
+    "./array"
+], function() {
     /**
      * Recorre un array o valor iterable y ejecuta la funcion proporcionada por cada elemento
      * pudiendo romper la iteracion al regresar `false`.
      *
-     * @param {Array}     array             Array a recorrer
-     * @param {Function}  fn                Funcion a ejecutar que recibe los parametros
-     * @param {String}    fn.key                                          item:  elemento del array,
-     *                                          index: indice del elemento,
-     *                                          array: el array propio
-     * @param {Object}    [scope=array[i]]  Scope en que la funcion es ejecutada (referencia de `this`)
-     * @param {Boolean}   [reverse]         Iterar el array en reversa
-     * @return {Boolean}                    `true` en caso de no detener el ciclo, `index` de lo contrario
+     * @param {Array} array Array a recorrer
+     * @param {Function} fn Funcion a ejecutar
+     * @param {Object} fn.item Elemento del array
+     * @param {Number} fn.index Indice del elemento
+     * @param {Array} fn.array El array mismo
+     * @param {Object} [scope] Scope en que la funcion es ejecutada (referencia de `this`)
+     * @param {Boolean} [reverse] Iterar el array en reversa
+     * @return {Boolean} `true` en caso de no detener el ciclo, `index` de lo contrario
      */
-    $Array.each = function(array, fn, scope, reverse) {
+    $.Array.each = function(array, fn, scope, reverse) {
         var i,
         ln = array.length;
 

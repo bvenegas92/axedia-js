@@ -1,5 +1,10 @@
 define([
-    '../core',
-], function($) {
-    var $Number = $.Number = {};
+    "../core",
+], function() {
+    /**
+     * Crea o referencía el objeto o funcion `Number`
+     *
+     * @type {Object|Function}
+     */
+    $.Number = $.Number || {};
 });

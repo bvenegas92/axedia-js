@@ -1,14 +1,14 @@
 define([
-    './array',
-    '../type/isArray'
-], function($Array, $Type) {
+    "./array",
+    "../type/isArray"
+], function() {
     /**
-     * "Aplana" de manera recursiva en un array de una dimensión.
+     * "Aplana" un array de manera recursiva en un array de una dimensión.
      *
-     * @param {Array}   array     Array a aplanar
-     * @return {Array}            Array de una dimension
+     * @param {Array} array Array a aplanar
+     * @return {Array} Array de una dimension
      */
-    $Array.flatten = function(array) {
+    $.Array.flatten = function(array) {
         var worker = [];
 
         function rFlatten(a) {
@@ -17,7 +17,7 @@ define([
             for (i = 0, ln = a.length; i < ln; i++) {
                 v = a[i];
 
-                if ($Type.isArray(v)) {
+                if ($.Type.isArray(v)) {
                     rFlatten(v);
                 } else {
                     worker.push(v);

@@ -1,13 +1,13 @@
 define([
-    './object'
-], function($Object) {
+    "./object"
+], function() {
     /**
      * Limpia todas las keys de `object`
      *
-     * @param  {Object}  object  Objeto a limpiar
-     * @return {Object}          Objeto limpiado
+     * @param {Object} object Objeto a limpiar
+     * @return {Object} Objeto limpiado
      */
-    $Object.clear = function(object) {
+    $.Object.clear = function(object) {
         // Safe to delete during iteration
         for (var key in object) {
             delete object[key];

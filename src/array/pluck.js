@@ -1,15 +1,15 @@
 define([
-    './array'
-], function($Array) {
+    "./array"
+], function() {
     /**
      * Toma el valor de una propiedad de cada elemento en el array y arma un nuevo
      * array con estos valores.
      *
-     * @param {Array}   array         Array a iterar
-     * @param {String}  propertyName  Propiedad a tomar
-     * @return {Array}                Array con los valores de las propiedades
+     * @param {Array} array Array a iterar
+     * @param {String} propertyName Propiedad a tomar
+     * @return {Array} Array con los valores de las propiedades
      */
-    $Array.pluck = function(array, propertyName) {
+    $.Array.pluck = function(array, propertyName) {
         var ret = [],
             i, ln, item;
 

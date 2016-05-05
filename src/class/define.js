@@ -13,6 +13,20 @@ define([
     './isRequireJSAvailable',
     './find'
 ], function($Class, $RegExp, $Array, $Type, $Object) {
+    /**
+     * Define una clase usando un nombre con el patron `Namespace.Subnamespace.Class` y un objeto que servira como
+     * prototipo de las nuevas instancias.
+     *
+     * El prototipo puede llevar cualquier propiedad excepto algunas que son reservadas para uso interno, dichas
+     * propiedades son las siguientes:
+     *
+     * `extend`      {String}:          Nombre de la clase de la cual se extiende.
+     * `require`     {String[]}        Nombre de las clases de las que depende.
+     * `constructor` {Function}    Funcion que se ejecuta al crear una instancia de la clase.
+     *
+     * @param  {String}  className       Nombre de la clase
+     * @param  {Object}  classPrototype  Prototipo para las instancias
+     */
     $Class.define = function(className, classPrototype) {
         var classConstructor;
 
@@ -25,43 +39,7 @@ define([
         // busca/carga las dependencias
         _findOrLoadDependencies();
 
-        /*if (classPrototype.extend || classPrototype.require) {
-            /*if ($Class.isRequireJSAvailable()) {
-                // crea un arreglo de dependecias y formatea el nombre de las clases de forma:
-                // Namespace/Subnamespace/Class
-                requireArray = $Array.merge([], classPrototype.extend || [], classPrototype.require || []);
-                requireArray = $Array.map(requireArray, function(item) {
-                    return item.replace(/\./g, '/');
-                });
-                // define la nueva clase usando RequireJS
-                define(requireArray, function(ParentClass) {
-                    return _createConstructor(className, classPrototype, new ParentClass());
-                });
-            } else {
-                if (classPrototype.extend) {
-                    // encuentra el constructor de la clase padre
-                    ParentClass = $Class.find(classPrototype.extend);
-                }
-                if (classPrototype.require) {
-                    // asegura que todas las clases requeridas existan
-                    $Array.each(classPrototype.require, function(classRequired) {
-                        $Class.find(classRequired);
-                    });
-                }
-                constructor = _createConstructor(className, classPrototype, (ParentClass ? new ParentClass() : {}));
-                _createNamespace(className, constructor);
-            }
-        } else {
-            if ($Class.isRequireJSAvailable()) {
-                define(function() {
-                    constructor = _createConstructor(className, classPrototype);
-                    _createNamespace(className, constructor);
-                });
-            } else {
-                constructor = _createConstructor(className, classPrototype);
-                _createNamespace(className, constructor);
-            }
-        }*/
+        return classConstructor;
 
         // encuentra/carga todas las dependencias de la clase
         // si RequireJS esta disponible carga las clases requeridas

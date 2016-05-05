@@ -1,10 +1,10 @@
 define([
-    './regexp'
-], function($RegExp) {
+    "./regexp"
+], function() {
     /**
-     * Espacios (i.e. ' ', \t, \n, \r, \v)
+     * Espacios (i.e. " ", \t, \n, \r, \v)
      *
      * @type {RegExp}
      */
-    $RegExp.SPACES = /\s+/;
+    $.RegExp.SPACES = /\s+/;
 });

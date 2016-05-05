@@ -1,15 +1,15 @@
 define([
-    './object'
-], function($Object) {
+    "./object"
+], function() {
     /**
      * Verifica si dos objectos son iguales. Se consideran iguales si ambos objetos tienen las mismas propiedades
      * y los mismos valores.
      *
-     * @param  {Object} object1  Objeto 1
-     * @param  {Object} object2  Objeto 2
-     * @return {Boolean}         `true` si son iguales, `false` de lo contrario
+     * @param {Object} object1 Objeto 1
+     * @param {Object} object2 Objeto 2
+     * @return {Boolean} `true` si son iguales, `false` de lo contrario
      */
-    $Object.equals = (function(object1, object2) {
+    $.Object.equals = (function(object1, object2) {
         var check = function(o1, o2) {
             var key;
 

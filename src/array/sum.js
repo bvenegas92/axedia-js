@@ -1,13 +1,13 @@
 define([
-    './array'
-], function($Array) {
+    "./array"
+], function() {
     /**
      * Calcula la suma de los elementos
      *
-     * @param {Array}  array  Array a calcular
-     * @return {Number}       Suma
+     * @param {Array} array Array a calcular
+     * @return {Number} Suma
      */
-    $Array.sum = function(array) {
+    $.Array.sum = function(array) {
         var sum = 0,
             i, ln, item;
 

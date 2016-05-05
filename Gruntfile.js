@@ -130,6 +130,7 @@ module.exports = function(grunt) {
             module = module.indexOf('src/') !== -1 ? module : 'src/' + module;
 
             if (grunt.file.isDir(module)) {
+                console.log(module);
                 files = grunt.file.expand(module + '/**/*.js');
                 for (i = 0; i < files.length; i++) {
                     dependencies.push(files[i].replace('src', '.'));

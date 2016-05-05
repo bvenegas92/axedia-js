@@ -1,10 +1,10 @@
 define([
-    './regexp'
-], function($RegExp) {
+    "./regexp"
+], function() {
     /**
      * Nombre de Clases estilo `Namespace.SubNamespace.ClassName`
      *
      * @type {RegExp}
      */
-    $RegExp.JS_NAMESPACE_CLASS = /^([a-zA-Z_\$][a-zA-Z\d_\$]*\.)*[a-zA-Z_\$][a-zA-Z\d_\$]*$/;
+    $.RegExp.JS_NAMESPACE_CLASS = /^([a-zA-Z_\$][a-zA-Z\d_\$]*\.)*[a-zA-Z_\$][a-zA-Z\d_\$]*$/;
 });

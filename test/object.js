@@ -1,4 +1,4 @@
-/*describe("Object", function() {
+describe("Object", function() {
     var obj;
 
     beforeEach(function() {
@@ -13,110 +13,107 @@
         };
     });
 
-    if (Axedia.Object) {
-        if (Axedia.Object.chain) {
-            it('chain debe hacer prototype', function() {
-                var value = Axedia.Object.chain(obj);
+    if (Object.chain) {
+        it('chain debe hacer prototype', function() {
+            var value = Object.chain(obj);
 
-                expect(value.__proto__).toEqual(obj);
-            });
-        }
+            expect(value.__proto__).toEqual(obj);
+        });
+    }
 
-        if (Axedia.Object.clear) {
-            it('clear debe limpiar', function() {
-                var value = Axedia.Object.clear(obj);
+    if (Object.clear) {
+        it('clear debe limpiar', function() {
+            var value = Object.clear(obj);
 
-                expect(value).toEqual({});
-            });
-        }
+            expect(value).toEqual({});
+        });
+    }
 
-        if (Axedia.Object.clone) {
-            it('clone debe clonar', function() {
-                var value = Axedia.Object.clone({number: 2});
+    if (Object.clone) {
+        it('clone debe clonar', function() {
+            var value = Object.clone({number: 2});
 
-                expect(value).toEqual({number: 2});
-            });
-        }
+            expect(value).toEqual({number: 2});
+        });
+    }
 
-        if (Axedia.Object.copy) {
-            it('copy debe copiar', function() {
-                var value = Axedia.Object.copy({number: 2});
+    if (Object.copy) {
+        it('copy debe copiar', function() {
+            var value = Object.copy({number: 2});
 
-                expect(value).toEqual({number: 2});
-            });
-        }
+            expect(value).toEqual({number: 2});
+        });
+    }
 
-        if (Axedia.Object.copyIf) {
-            it('copyIf debe copiar', function() {
-                var value = Axedia.Object.copyIf({number: 2}, obj);
+    if (Object.copyIf) {
+        it('copyIf debe copiar', function() {
+            var value = Object.copyIf({number: 2}, obj);
 
-                expect(value.number).toEqual(2);
-            });
-        }
+            expect(value.number).toEqual(2);
+        });
+    }
 
-        if (Axedia.Object.equals) {
-            it('equals debe comparar', function() {
-                var value = Axedia.Object.equals({number: 2}, {number: 2});
+    if (Object.equals) {
+        it('equals debe comparar', function() {
+            var value = Object.equals({number: 2}, {number: 2});
 
-                expect(value).toBe(true);
-            });
-        }
+            expect(value).toBe(true);
+        });
+    }
 
-        if (Axedia.Object.getAllKeys) {
-            it('getAllKeys debe obtener las propiedades', function() {
-                var value = Axedia.Object.getAllKeys(obj);
+    if (Object.getAllKeys) {
+        it('getAllKeys debe obtener las propiedades', function() {
+            var value = Object.getAllKeys(obj);
 
-                expect(value).toEqual(['number', 'string', 'array', 'fn', 'boolean']);
-            });
-        }
+            expect(value).toEqual(['number', 'string', 'array', 'fn', 'boolean']);
+        });
+    }
 
-        if (Axedia.Object.getKey) {
-            it('getKey debe obtener la propiedad', function() {
-                var value = Axedia.Object.getKey(obj, 1);
+    if (Object.getKey) {
+        it('getKey debe obtener la propiedad', function() {
+            var value = Object.getKey(obj, 1);
 
-                expect(value).toEqual('number');
-            });
-        }
+            expect(value).toEqual('number');
+        });
+    }
 
-        if (Axedia.Object.getKeys) {
-            it('getKeys debe obtener las propiedades', function() {
-                var value = Axedia.Object.getKeys(obj);
+    if (Object.getKeys) {
+        it('getKeys debe obtener las propiedades', function() {
+            var value = Object.getKeys(obj);
 
-                expect(value).toEqual(['number', 'string', 'array', 'fn', 'boolean']);
-            });
-        }
+            expect(value).toEqual(['number', 'string', 'array', 'fn', 'boolean']);
+        });
+    }
 
-        if (Axedia.Object.getSize) {
-            it('getSize debe obtener el numero de las propiedades', function() {
-                var value = Axedia.Object.getSize(obj);
+    if (Object.getSize) {
+        it('getSize debe obtener el numero de las propiedades', function() {
+            var value = Object.getSize(obj);
 
-                expect(value).toEqual(5);
-            });
-        }
+            expect(value).toEqual(5);
+        });
+    }
 
-        if (Axedia.Object.getValues) {
-            it('getValues debe obtener los valores', function() {
-                var value = Axedia.Object.getValues(obj);
+    if (Object.getValues) {
+        it('getValues debe obtener los valores', function() {
+            var value = Object.getValues(obj);
 
-                expect(value.length).toEqual(5);
-            });
-        }
+            expect(value.length).toEqual(5);
+        });
+    }
 
-        if (Axedia.Object.isEmpty) {
-            it('isEmpty debe verificar si existen propiedades', function() {
-                var value = Axedia.Object.isEmpty(obj);
+    if (Object.isEmpty) {
+        it('isEmpty debe verificar si existen propiedades', function() {
+            var value = Object.isEmpty(obj);
 
-                expect(value).toBe(false);
-            });
-        }
+            expect(value).toBe(false);
+        });
+    }
 
-        if (Axedia.Object.merge) {
-            it('merge debe unir', function() {
-                var value = Axedia.Object.merge({alfa: 'a'}, {beta: 1});
+    if (Object.merge) {
+        it('merge debe unir', function() {
+            var value = Object.merge({alfa: 'a'}, {beta: 1});
 
-                expect(value).toEqual({alfa: 'a', beta: 1});
-            });
-        }
+            expect(value).toEqual({alfa: 'a', beta: 1});
+        });
     }
 });
-*/

@@ -1,20 +1,19 @@
 define([
-    './array',
-    '../var/array/prototype'
-], function($Array, arrayPrototype) {
+    "./array",
+], function() {
     /**
      * Crea un nuevo array con todos los elementos de los cuales la funcion proporcionada
      * devolvio un valor truthy.
      *
-     * @param {Array}     array             Array a evaluar
-     * @param {Function}  fn                Funcion a ejecutar que recibe los parametros
-     *                                          item:  elemento del array,
-     *                                          index: indice del elemento,
-     *                                          array: el array propio
-     * @param {Object}    [scope=array[i]]  Scope en que la funcion es ejecutada (referencia de `this`)
-     * @return {Array}                      Array filtrado
+     * @param {Array} array Array a evaluar
+     * @param {Function} fn Funcion a ejecutar
+     * @param {Object} fn.item Elemeto del array
+     * @param {Number} fn.index Indice del elemento
+     * @param {Array} fn.array El array mismo
+     * @param {Object} [scope] Scope en que la funcion es ejecutada (referencia de `this`)
+     * @return {Array} Array filtrado
      */
-    $Array.filter = ('filter' in arrayPrototype) ? function(array, fn, scope) {
+    $.Array.filter = ("filter" in Array.prototype) ? function(array, fn, scope) {
         return array.filter(fn, scope);
     } : function(array, fn, scope) {
         var results = [],

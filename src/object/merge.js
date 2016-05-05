@@ -1,19 +1,19 @@
 define([
-    './object',
-    './clone'
+    "./object",
+    "./clone"
 ], function($Object) {
     /**
      * Une cualquier cantidad de objetos de manera recursiva sin que estos se referencien
      *
-     * @param  {Object}    destination  Objeto destino
-     * @param  {...Object}  object      Objetos a unir
-     * @return {Object}                 Objeto resultante
+     * @param {Object} destination Objeto destino
+     * @param {...Object} object Objetos a unir
+     * @return {Object} Objeto resultante
      */
-    $Object.merge = function(destination) {
+    $.Object.merge = function(destination) {
         var i = 1,
             ln = arguments.length,
-            mergeFn = $Object.merge,
-            cloneFn = $Object.clone,
+            mergeFn = $.Object.merge,
+            cloneFn = $.Object.clone,
             object, key, value, sourceKey;
 
         for (; i < ln; i++) {

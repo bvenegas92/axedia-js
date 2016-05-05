@@ -1,4 +1,4 @@
-/*describe("Function", function() {
+describe("Function", function() {
     var fn;
 
     beforeEach(function() {
@@ -7,14 +7,11 @@
         };
     });
 
-    if (Axedia.Function) {
-        if (Axedia.Function.clone) {
-            it('clone debe clonar', function() {
-                var value = Axedia.Function.clone(fn);
+    if (Function.clone) {
+        it('clone debe clonar', function() {
+            var value = Function.clone(fn);
 
-                expect(value(1, 2)).toEqual(3);
-            });
-        }
+            expect(value(1, 2)).toEqual(3);
+        });
     }
 });
-*/

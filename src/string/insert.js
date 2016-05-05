@@ -1,15 +1,15 @@
 define([
-    './string'
-], function($String) {
+    "./string"
+], function() {
     /**
      * Inserta un substring en un string
      *
-     * @param {String}   s      Substring a insertar
-     * @param {String}   value  String donde insertar
-     * @param {Number}  index  Indice en cual insertar el substring
-     * @return {String}        El string con subtring insertado
+     * @param {String} s Substring a insertar
+     * @param {String} value String donde insertar
+     * @param {Number} index Indice en cual insertar el substring
+     * @return {String} El string con subtring insertado
      */
-    $String.insert = function(s, value, index) {
+    $.String.insert = function(s, value, index) {
         if (!s) {
             return value;
         }
