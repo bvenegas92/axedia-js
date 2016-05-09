@@ -1,5 +1,5 @@
 define([
-    "./array",
+    "./array"
 ], function() {
     /**
      * Crea un nuevo array con todos los elementos de los cuales la funcion proporcionada

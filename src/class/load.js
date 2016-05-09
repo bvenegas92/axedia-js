@@ -1,25 +1,20 @@
 define([
-    './class',
-    './isRequireJSAvailable',
-    '../regExp/jsNamespaceClass'
-], function($Class, $RegExp) {
+    "./class",
+    "./validateClassName"
+], function() {
     /**
-     * Carga una clase (peticion del archivo js) y ejecuta `fn`. `className` debe ser del tipo
-     * 'Namespace.Subnamespace.Class'
+     * Carga una clase (peticion del archivo js) y ejecuta `fn`.
      *
-     * @param  {String}   className  Nombre de la clase
-     * @param  {Function} fn        Funcion a ejecutar despues de cargar el archivo
+     * @param {String} className Nombre de la clase
+     * @param {Function} fn Funcion a ejecutar despues de cargar el archivo
      */
-    $Class.load = function(className, fn) {
-        if ($Class.isRequireJSAvailable) {
-            if (!$RegExp.JS_NAMESPACE_CLASS.test(className)) {
-                throw new Error('[Axedia.Class.load] Invalid class name "' + className +
-                    '". Class name must be of kind "Namespace.Subnamespace.Class"');
-            }
+    $.Class.load = function(className, fn) {
+        if ($.IS_REQUIREJS_AVAILABLE) {
+            $.Class.validateClassName(className);
 
-            define([className.replace(/\./g, '/')], fn);
+            define([className.replace(/\./g, "/")], fn);
         } else {
-            throw new Error('[Axedia.Class.load] RequireJS must be available to load a class');
+            throw new Error("[" + namespace + ".Class.load] RequireJS debe estar disponible para cargar una clase");
         }
     };
 });

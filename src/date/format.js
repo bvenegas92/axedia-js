@@ -14,7 +14,7 @@ define([
     './isLeapYear',
     './getGMTOffset',
     './getTimezone',
-    '../function/factory',
+    '../function/factory'
 ], function($Date, $Type, $Function, $String) {
     /**
      * Formatea una instancia `date` con el formato proporcionado

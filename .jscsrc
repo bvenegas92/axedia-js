@@ -3,6 +3,7 @@
     "validateIndentation": 4,
     "requireCurlyBraces": false,
     "disallowMultipleVarDecl": false,
+    "disallowTrailingComma": true,
     "maximumLineLength": {
         "value": 120,
         "allExcept": ["regex", "comments", "urlComments", "functionSignature", "require"]

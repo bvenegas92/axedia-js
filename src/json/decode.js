@@ -21,7 +21,7 @@ define([
                 if (safe) {
                     return null;
                 }
-                throw new Error("[" + namespace + ".JSON] JSON String invalido: " + json);
+                throw new Error("[" + namespace + ".JSON] JSON String inválido: " + json);
             }
         };
     })();

@@ -1,19 +1,19 @@
 define([
-    './date',
-    './clone',
-    './add',
-    './hour'
-], function($Date) {
+    "./date",
+    "./clone",
+    "./add",
+    "./hour"
+], function() {
     /**
      * Intenta limpiar la informacion del tiempo de la instancia `Date` estableciendola a la medianoche.
      *
-     * @param {Date}     date   Instancia a limpiar
-     * @param {Boolean}  clone  `true` para retornar una nueva instancia
-     * @return {Date}         `Date` con el tiempo limpio
+     * @param {Date} date Instancia a limpiar
+     * @param {Boolean} clone `true` para retornar una nueva instancia
+     * @return {Date} `Date` con el tiempo limpio
      */
-    $Date.clearTime = function(date, clone) {
+    $.Date.clearTime = function(date, clone) {
         if (clone) {
-            return $Date.clearTime($Date.clone(date));
+            return $.Date.clearTime($.Date.clone(date));
         }
 
         // get current date before clearing time
@@ -32,9 +32,9 @@ define([
             // refer to http://www.timeanddate.com/time/aboutdst.html for the (rare) exceptions to this rule
 
             // increment hour until cloned date == current date
-            for (hr = 1, c = $Date.add(date, $Date.HOUR, hr);
+            for (hr = 1, c = $.Date.add(date, $.Date.HOUR, hr);
                 c.getDate() !== d;
-                hr++, c = $Date.add(date, $Date.HOUR, hr)
+                hr++, c = $.Date.add(date, $.Date.HOUR, hr)
             ) {}
 
             date.setDate(d);

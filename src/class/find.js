@@ -1,41 +1,40 @@
 define([
-    './class',
-    '../regExp/jsNamespaceClass',
-    '../array/each',
-    '../type/isFunction'
-], function($Class, $RegExp, $Array, $Type) {
+    "./class",
+    "./validateClassName",
+    "../array/each",
+    "../array/indexOf",
+    "../array/erase",
+    "../type/isFunction"
+], function() {
     /**
      * Encuentra una Clase/Constructor comenzando la busqueda en el ambito global. `className` debe ser del tipo
-     * 'Namespace.Subnamespace.Class'
+     * "Namespace.Subnamespace.Class"
      *
-     * @param  {String}  className  Nombre de la clase
-     * @param  {Boolean}  safe      `true` para devolver un valor `null` en caso de no encontrar la clase o que
-     *                              el objeto encontrado no sea un constructor (function)
-     * @return {?Function}          La clase o `null`
+     * @param {String} className Nombre de la clase
+     * @param  {Boolean} safe `true` para devolver un valor `null` en caso de no encontrar la clase o que
+     *                        el objeto encontrado no sea un constructor (function)
+     * @return {?Function} La clase o `null`
      */
-    $Class.find = function(className, safe) {
-        var namespace = GLOBAL;
+    $.Class.find = function(className, safe) {
+        var ref = global;
 
-        if (!$RegExp.JS_NAMESPACE_CLASS.test(className)) {
-            throw new Error('[Axedia.Class.find] Invalid class name "' + className +
-                '". Class name must be of kind "Namespace.Subnamespace.Class"');
-        }
+        $.Class.validateClassName(className);
 
-        $Array.each(className.split('.'), function(name, index) {
-            if (name in namespace) {
-                namespace = namespace[name];
+        $.Array.each(className.split("."), function(name, index) {
+            if (name in ref) {
+                ref = ref[name];
             } else {
-                namespace = null;
+                ref = null;
                 return false;
             }
         });
 
-        if (!safe && namespace == null) {
-            throw new Error('[Axedia.Class.find] Class "' + className + '" not found');
-        } else if (!safe && !$Type.isFunction(namespace)) {
-            throw new Error('[Axedia.Class.find] Object "' + className + '" is not a function');
+        if (!safe && ref == null) {
+            throw new Error("[" + namespace + ".Class.find] Clase \"" + className + "\" no encontrada");
+        } else if (!safe && !$.Type.isFunction(ref)) {
+            throw new Error("[" + namespace + ".Class.find] \"" + className + "\" no es un constructor");
         }
 
-        return namespace;
+        return ref;
     };
 });

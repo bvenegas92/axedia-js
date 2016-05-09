@@ -1,6 +1,5 @@
 define([
-    "./function",
-    "../var/array/slice"
+    "./function"
 ], function() {
     /**
      * Crea nuevas funciones ejecutando el codigo de los parametros

@@ -1,18 +1,17 @@
 define([
-    './class',
-    '../array/each',
-    '../array/slice',
-    '../array/merge',
-    '../array/map',
-    '../type/isFunction',
-    '../type/isArray',
-    '../type/isObject',
-    '../object/merge',
-    '../object/chain',
-    './validateClassName',
-    './isRequireJSAvailable',
-    './find'
-], function($Class, $RegExp, $Array, $Type, $Object) {
+    "./class",
+    "../array/each",
+    "../array/slice",
+    "../array/merge",
+    "../array/map",
+    "../type/isFunction",
+    "../type/isArray",
+    "../type/isObject",
+    "../object/merge",
+    "../object/chain",
+    "./validateClassName",
+    "./find"
+], function() {
     /**
      * Define una clase usando un nombre con el patron `Namespace.Subnamespace.Class` y un objeto que servira como
      * prototipo de las nuevas instancias.
@@ -20,18 +19,18 @@ define([
      * El prototipo puede llevar cualquier propiedad excepto algunas que son reservadas para uso interno, dichas
      * propiedades son las siguientes:
      *
-     * `extend`      {String}:          Nombre de la clase de la cual se extiende.
-     * `require`     {String[]}        Nombre de las clases de las que depende.
-     * `constructor` {Function}    Funcion que se ejecuta al crear una instancia de la clase.
+     * `extend` {String} Nombre de la clase de la cual se extiende.
+     * `require` {String[]} Nombre(s) de la(s) clase(s) de la(s) que depende.
+     * `constructor` {Function} Funcion que se ejecuta al crear una instancia de la clase.
      *
-     * @param  {String}  className       Nombre de la clase
-     * @param  {Object}  classPrototype  Prototipo para las instancias
+     * @param {String} className Nombre de la clase
+     * @param {Object} classPrototype Prototipo para las instancias
      */
-    $Class.define = function(className, classPrototype) {
+    $.Class.define = function(className, classPrototype) {
         var classConstructor;
 
         // valida el nombre de la clase
-        $Class.validateClassName(className);
+        $.Class.validateClassName(className);
         // crea el constructor
         classConstructor = _createConstructor();
         // crea el namespace
@@ -47,31 +46,31 @@ define([
         function _findOrLoadDependencies() {
             var requireArray, parentClass;
 
-            if ($Class.isRequireJSAvailable()) {
+            if ($.Class.isRequireJSAvailable()) {
                 // si RequireJS esta disponible carga las clases requeridas
                 // valida la clase padre
                 if (classPrototype.extend) {
-                    $Class.validateClassName(classPrototype.extend);
+                    $.Class.validateClassName(classPrototype.extend);
                 }
                 // valida las clases requeridas
                 if (classPrototype.require) {
-                    $Array.each(classPrototype.require, $Class.validateClassName);
+                    $.Array.each(classPrototype.require, $.Class.validateClassName);
                 }
-                requireArray = $Array.merge([], classPrototype.extend || [], classPrototype.require || []);
-                requireArray = $Array.map(requireArray, function(item) {
-                    return item.replace(/\./g, '/');
+                requireArray = $.Array.merge([], classPrototype.extend || [], classPrototype.require || []);
+                requireArray = $.Array.map(requireArray, function(item) {
+                    return item.replace(/\./g, "/");
                 });
                 // define la nueva clase usando RequireJS
                 define(requireArray, _createPrototypeChain);
             } else {
                 if (classPrototype.extend) {
                     // encuentra el constructor de la clase padre
-                    parentClass = $Class.find(classPrototype.extend);
+                    parentClass = $.Class.find(classPrototype.extend);
                 }
                 if (classPrototype.require) {
                     // asegura que todas las clases requeridas existan
-                    $Array.each(classPrototype.require, function(classRequired) {
-                        $Class.find(classRequired);
+                    $.Array.each(classPrototype.require, function(classRequired) {
+                        $.Class.find(classRequired);
                     });
                 }
                 // crea la cadena de prototipo
@@ -97,39 +96,40 @@ define([
 
         // crea el namespace y asigna el constructor
         function _createNamespace() {
-            var namespace = GLOBAL,
-            pieces = className.split('.'),
+            var ref = GLOBAL,
+            pieces = className.split("."),
             ln = pieces.length;
 
-            $Array.each(pieces, function(name, index) {
+            $.Array.each(pieces, function(name, index) {
                 if (index === ln - 1) {
-                    // solo un nivel (e.g. 'ExampleClass')
-                    if (name in namespace) {
+                    // solo un nivel (e.g. "ExampleClass")
+                    if (name in ref) {
                         // si existe la propiedad en el objeto marca error (incluye la cadena de prototipo)
-                        throw new Error('[Axedia.Class] Property "' + name + '" already exists');
+                        throw new Error("[" + namespace + ".Class] La propiedad \"" + name + "\" ya existe");
                     } else {
-                        namespace[name] = classConstructor; // crea el constructor
+                        ref[name] = classConstructor; // crea el constructor
                     }
                 } else {
-                    // dos niveles o mas (e.g. 'Namespace.ExampleClass')
-                    if (name in namespace) {
-                        if (!$Type.isFunction(namespace[name]) &&
-                            !$Type.isArray(namespace[name]) &&
-                            !$Type.isObject(namespace[name])) {
+                    // dos niveles o mas (e.g. "Namespace.ExampleClass")
+                    if (name in ref) {
+                        if (!$.Type.isFunction(ref[name]) &&
+                            !$.Type.isArray(ref[name]) &&
+                            !$.Type.isObject(ref[name])) {
                             // necesita ser Function|Array|Object para poder agregar una propiedad
-                            throw new Error('[Axedia.Class] Property "' +
-                                $Array.slice(pieces, 0, index + 1).join('.') +
-                                '" must be a function, an array or an object to build provided namespace instead ' +
-                                'type "' + typeof namespace + '" was found'
+                            throw new Error("[" + namespace + ".Class] La propiedad \"" +
+                                $.Array.slice(pieces, 0, index + 1).join(".") +
+                                "\" debe ser del tipo Function, Array u Object " +
+                                "para crear el nombre de clase proporcionado, en su lugar " +
+                                "type \"" + (typeof ref) + "\" fue encontrado."
                             );
                         } else {
                             // si ya existe guarda la referencia
-                            namespace = namespace[name];
+                            ref = ref[name];
                         }
                     } else {
                         // si no existe crea un objeto para continuar la cade de namespace y guarda la referencia
-                        namespace[name] = {};
-                        namespace = namespace[name];
+                        ref[name] = {};
+                        ref = ref[name];
                     }
                 }
             });
@@ -138,12 +138,12 @@ define([
         function _createPrototypeChain(parentClass) {
             // prototipo del padre
             if (parentClass) {
-                classConstructor.prototype = $Object.chain(parentClass.prototype);
+                classConstructor.prototype = $.Object.chain(parentClass.prototype);
                 classConstructor.prototype.parent = parentClass;
             }
 
             // prototipo de clase
-            $Object.merge(classConstructor.prototype, classPrototype, {$className: className});
+            $.Object.merge(classConstructor.prototype, classPrototype, {$className: className});
 
             return classConstructor;
         }

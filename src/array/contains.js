@@ -1,6 +1,6 @@
 define([
     "./array",
-    "./indexOf",
+    "./indexOf"
 ], function() {
     /**
      * Verifica si un elemento se encuentra en el array proporcionado.

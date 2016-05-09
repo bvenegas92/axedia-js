@@ -5,6 +5,14 @@ describe("Date", function() {
         date = new Date();
     });
 
+    if (Date.add) {
+        it('add debe agregar tiempo', function() {
+            var value = Date.add(date, Date.DAY, 1);
+
+            expect(value.getDate()).toEqual(new Date().getDate() + 1);
+        });
+    }
+
     if (Date.between) {
         it('between debe verificar si car en un rango de fechas', function() {
             var value = Date.between(
@@ -17,11 +25,27 @@ describe("Date", function() {
         });
     }
 
+    if (Date.clearTime) {
+        it('clearTime debe limpiar el tiempo', function() {
+            var value = Date.clearTime(date);
+
+            expect(value.getHours()).toEqual(0);
+        });
+    }
+
     if (Date.clone) {
         it('clone debe clonar', function() {
             var value = Date.clone(date);
 
             expect(value != date).toBe(true);
+        });
+    }
+
+    if (Date.diff) {
+        it('diff debe obtener la diferencia', function() {
+            var value = Date.diff(new Date(2016, 0, 10), new Date(2016, 0, 12), Date.DAY);
+
+            expect(value).toEqual(2);
         });
     }
 
@@ -89,11 +113,11 @@ describe("Date", function() {
         });
     }
 
-    if (Date.unescapeFormat) {
-        it('unescapeFormat debe unescape', function() {
-            var value = Date.unescapeFormat('d \\de F \\de Y');
+    if (Date.isValid) {
+        it('isValid debe verificar si es valido', function() {
+            var value = Date.isValid(2016, 3, 14);
 
-            expect(value).toEqual('d de F de Y');
+            expect(value).toBe(true);
         });
     }
 
@@ -110,38 +134,6 @@ describe("Date", function() {
             var value = Date.getGMTOffset(new Date());
 
             expect(value).toEqual('-0600');
-        });
-    }
-
-    /*if (Date.add) {
-        it('add debe agregar tiempo', function() {
-            var value = Date.add(date, Date.DAY, 1);
-
-            expect(value.getDate()).toEqual(new Date().getDate() + 1);
-        });
-    }
-
-    if (Date.clearTime) {
-        it('clearTime debe limpiar el tiempo', function() {
-            var value = Date.clearTime(date);
-
-            expect(value.getHours()).toEqual(0);
-        });
-    }
-
-    if (Date.diff) {
-        it('diff debe obtener la diferencia', function() {
-            var value = Date.diff(new Date(2016, 0, 10), new Date(2016, 0, 12), Date.DAY);
-
-            expect(value).toEqual(2);
-        });
-    }
-
-    if (Date.format) {
-        it('format debe formatear', function() {
-            var value = Date.format(new Date(2016, 0, 10), 'Y-m-d H:i:s');
-
-            expect(value).toEqual('2016-01-10 00:00:00');
         });
     }
 
@@ -185,11 +177,11 @@ describe("Date", function() {
         });
     }
 
-    if (Date.isValid) {
-        it('isValid debe verificar si es valido', function() {
-            var value = Date.isValid(2016, 3, 14);
+    if (Date.unescapeFormat) {
+        it('unescapeFormat debe unescape', function() {
+            var value = Date.unescapeFormat('d \\de F \\de Y');
 
-            expect(value).toBe(true);
+            expect(value).toEqual('d de F de Y');
         });
     }
 
@@ -198,6 +190,14 @@ describe("Date", function() {
             var value = Date.subtract(new Date(2016, 2, 14), 'd', 4);
 
             expect(value.getDate()).toEqual(10);
+        });
+    }
+
+    /*if (Date.format) {
+        it('format debe formatear', function() {
+            var value = Date.format(new Date(2016, 0, 10), 'Y-m-d H:i:s');
+
+            expect(value).toEqual('2016-01-10 00:00:00');
         });
     }*/
 });

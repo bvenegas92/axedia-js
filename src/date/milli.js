@@ -1,5 +1,5 @@
 define([
-    "./date",
+    "./date"
 ], function() {
     /**
      * Constante de intervalo

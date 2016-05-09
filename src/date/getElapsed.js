@@ -1,5 +1,5 @@
 define([
-    './date'
+    "./date"
 ], function() {
     /**
      * Retorna el numero de milisegundos entre dos fechas

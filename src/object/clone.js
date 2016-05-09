@@ -1,5 +1,5 @@
 define([
-    "./object",
+    "./object"
 ], function() {
     /**
      * Clona las propiedades simples de un objeto incluyendo:
