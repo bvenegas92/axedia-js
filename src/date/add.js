@@ -24,7 +24,9 @@ define([
      */
     $.Date.add = function(date, interval, value) {
         var d = $.Date.clone(date),
-            day, decimalValue, base = 0;
+            base = 0,
+            day, decimalValue;
+
         if (!interval || value === 0) {
             return d;
         }

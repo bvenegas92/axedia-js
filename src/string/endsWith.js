@@ -11,6 +11,7 @@ define([
      */
     $.String.endsWith = function(s, end, ignoreCase) {
         var result;
+
         if (s === null || s === undefined || end === null || end === undefined) {
             return false;
         }

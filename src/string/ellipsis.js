@@ -13,7 +13,13 @@ define([
         if (value && value.length > length) {
             if (word) {
                 var vs = value.substr(0, length - 2),
-                index = Math.max(vs.lastIndexOf(" "), vs.lastIndexOf("."), vs.lastIndexOf("!"), vs.lastIndexOf("?"));
+                    index = Math.max(
+                        vs.lastIndexOf(" "),
+                        vs.lastIndexOf("."),
+                        vs.lastIndexOf("!"),
+                        vs.lastIndexOf("?")
+                    );
+
                 if (index !== -1 && index >= (length - 15)) {
                     return vs.substr(0, index) + "...";
                 }

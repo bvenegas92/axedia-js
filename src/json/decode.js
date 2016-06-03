@@ -6,10 +6,11 @@ define([
      *
      * @param {String} json JSON String
      * @param {Boolean} [safe] `true` para retornar null en caso de una excepcion, `false` de lo contrario
+     * @throws {Error} Lanza un error si el JSON String es invalido
      * @return {Object} Objeto decodificado
      */
     $.JSON.decode = (function(json, safe) {
-        var hasNative = global.JSON && JSON.toString() === "[object JSON]";
+        var hasNative = ROOT.JSON && JSON.toString() === "[object JSON]";
 
         return function(json, safe) {
             try {
@@ -21,7 +22,7 @@ define([
                 if (safe) {
                     return null;
                 }
-                throw new Error("[" + namespace + ".JSON] JSON String inválido: " + json);
+                throw e;
             }
         };
     })();

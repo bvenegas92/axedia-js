@@ -9,6 +9,7 @@ define([
      */
     $.Date.unescapeFormat = function(format) {
         var slashRe = /\\/gi;
+
         // <ExtJS>
         // Escape the format, since \ can be used to escape special
         // characters in a date format. For example, in a Spanish

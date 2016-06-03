@@ -11,6 +11,7 @@ define([
      */
     $.Date.getGMTOffset = function(date, colon) {
         var offset = date.getTimezoneOffset();
+
         return (offset > 0 ? "-" : "+") +
             $.String.leftPad(Math.floor(Math.abs(offset) / 60), 2, "0") +
             (colon ? ":" : "") +

@@ -1,4 +1,4 @@
-describe("Object", function() {
+/*describe("Object", function() {
     var obj;
 
     beforeEach(function() {
@@ -14,7 +14,7 @@ describe("Object", function() {
     });
 
     if (Object.chain) {
-        it('chain debe hacer prototype', function() {
+        it('chain', function() {
             var value = Object.chain(obj);
 
             expect(value.__proto__).toEqual(obj);
@@ -22,7 +22,7 @@ describe("Object", function() {
     }
 
     if (Object.clear) {
-        it('clear debe limpiar', function() {
+        it('clear', function() {
             var value = Object.clear(obj);
 
             expect(value).toEqual({});
@@ -30,7 +30,7 @@ describe("Object", function() {
     }
 
     if (Object.clone) {
-        it('clone debe clonar', function() {
+        it('clone', function() {
             var value = Object.clone({number: 2});
 
             expect(value).toEqual({number: 2});
@@ -38,7 +38,7 @@ describe("Object", function() {
     }
 
     if (Object.copy) {
-        it('copy debe copiar', function() {
+        it('copy', function() {
             var value = Object.copy({number: 2});
 
             expect(value).toEqual({number: 2});
@@ -46,7 +46,7 @@ describe("Object", function() {
     }
 
     if (Object.copyIf) {
-        it('copyIf debe copiar', function() {
+        it('copyIf', function() {
             var value = Object.copyIf({number: 2}, obj);
 
             expect(value.number).toEqual(2);
@@ -54,7 +54,7 @@ describe("Object", function() {
     }
 
     if (Object.equals) {
-        it('equals debe comparar', function() {
+        it('equals', function() {
             var value = Object.equals({number: 2}, {number: 2});
 
             expect(value).toBe(true);
@@ -62,7 +62,7 @@ describe("Object", function() {
     }
 
     if (Object.getAllKeys) {
-        it('getAllKeys debe obtener las propiedades', function() {
+        it('getAllKeys', function() {
             var value = Object.getAllKeys(obj);
 
             expect(value).toEqual(['number', 'string', 'array', 'fn', 'boolean']);
@@ -70,7 +70,7 @@ describe("Object", function() {
     }
 
     if (Object.getKey) {
-        it('getKey debe obtener la propiedad', function() {
+        it('getKey', function() {
             var value = Object.getKey(obj, 1);
 
             expect(value).toEqual('number');
@@ -78,7 +78,7 @@ describe("Object", function() {
     }
 
     if (Object.getKeys) {
-        it('getKeys debe obtener las propiedades', function() {
+        it('getKeys', function() {
             var value = Object.getKeys(obj);
 
             expect(value).toEqual(['number', 'string', 'array', 'fn', 'boolean']);
@@ -86,7 +86,7 @@ describe("Object", function() {
     }
 
     if (Object.getSize) {
-        it('getSize debe obtener el numero de las propiedades', function() {
+        it('getSize', function() {
             var value = Object.getSize(obj);
 
             expect(value).toEqual(5);
@@ -94,7 +94,7 @@ describe("Object", function() {
     }
 
     if (Object.getValues) {
-        it('getValues debe obtener los valores', function() {
+        it('getValues', function() {
             var value = Object.getValues(obj);
 
             expect(value.length).toEqual(5);
@@ -102,7 +102,7 @@ describe("Object", function() {
     }
 
     if (Object.isEmpty) {
-        it('isEmpty debe verificar si existen propiedades', function() {
+        it('isEmpty', function() {
             var value = Object.isEmpty(obj);
 
             expect(value).toBe(false);
@@ -110,10 +110,11 @@ describe("Object", function() {
     }
 
     if (Object.merge) {
-        it('merge debe unir', function() {
+        it('merge', function() {
             var value = Object.merge({alfa: 'a'}, {beta: 1});
 
             expect(value).toEqual({alfa: 'a', beta: 1});
         });
     }
 });
+*/

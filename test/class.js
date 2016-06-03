@@ -1,6 +1,6 @@
-describe("Class", function() {
+/*describe("Class", function() {
     if (Class.find) {
-        it('find debe encontrar', function() {
+        it('find', function() {
             var value = Class.find('window.Date', true);
 
             expect(typeof value).toEqual("function");
@@ -8,10 +8,11 @@ describe("Class", function() {
     }
 
     if (Class.validateClassName) {
-        it('validateClassName debe validar', function() {
+        it('validateClassName', function() {
             var value = Class.validateClassName('Axedia.Array.noClass');
 
             expect(value).toBe(true);
         });
     }
 });
+*/

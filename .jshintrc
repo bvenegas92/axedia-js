@@ -1,7 +1,7 @@
 {
     "boss": true,
     "curly": false,
-    "eqeqeq": true,
+    "eqeqeq": false,
     "eqnull": true,
     "expr": true,
     "immed": true,
@@ -13,12 +13,16 @@
     "node": true,
     "globals": {
         "$": true,
+        "ROOT": true,
+        "self": true,
         "global": true,
-        "namespace": true,
+        "NAME": true,
         "window": true,
         "document": true,
         "JSON": true,
         "define": true,
+        "require": true,
+        "requirejs": true,
         "module": true
     }
 }

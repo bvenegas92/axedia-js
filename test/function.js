@@ -1,4 +1,4 @@
-describe("Function", function() {
+/*describe("Function", function() {
     var fn;
 
     beforeEach(function() {
@@ -8,10 +8,11 @@ describe("Function", function() {
     });
 
     if (Function.clone) {
-        it('clone debe clonar', function() {
+        it('clone', function() {
             var value = Function.clone(fn);
 
             expect(value(1, 2)).toEqual(3);
         });
     }
 });
+*/

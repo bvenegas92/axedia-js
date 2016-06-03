@@ -12,6 +12,7 @@ define([
      */
     $.Array.removeAt = function(array, index, count) {
         var len = array.length;
+
         if (index >= 0 && index < len) {
             count = count || 1;
             count = Math.min(count, len - index);

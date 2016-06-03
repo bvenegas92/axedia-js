@@ -1,6 +1,6 @@
-describe("Type", function() {
+/*describe("Type", function() {
     if (Type.isArray) {
-        it('isArray debe verificar arrays', function() {
+        it('isArray', function() {
             var value = Type.isArray([]);
 
             expect(value).toBe(true);
@@ -8,7 +8,7 @@ describe("Type", function() {
     }
 
     if (Type.isBoolean) {
-        it('isBoolean debe verificar booleans', function() {
+        it('isBoolean', function() {
             var value = Type.isBoolean(true);
 
             expect(value).toBe(true);
@@ -16,7 +16,7 @@ describe("Type", function() {
     }
 
     if (Type.isDate) {
-        it('isDate debe verificar dates', function() {
+        it('isDate', function() {
             var value = Type.isDate(new Date());
 
             expect(value).toBe(true);
@@ -24,7 +24,7 @@ describe("Type", function() {
     }
 
     if (Type.isDefined) {
-        it('isDefined debe verificar definidos', function() {
+        it('isDefined', function() {
             var value = '';
             value = Type.isDefined(value);
 
@@ -33,7 +33,7 @@ describe("Type", function() {
     }
 
     if (Type.isEmpty) {
-        it('isEmpty debe verificar vacios', function() {
+        it('isEmpty', function() {
             var value = Type.isEmpty('');
 
             expect(value).toBe(true);
@@ -41,7 +41,7 @@ describe("Type", function() {
     }
 
     if (Type.isFunction) {
-        it('isFunction debe verificar funciones', function() {
+        it('isFunction', function() {
             function fn() {
             }
             var value = Type.isFunction(fn);
@@ -51,7 +51,7 @@ describe("Type", function() {
     }
 
     if (Type.isHtmlElement) {
-        it('isHtmlElement debe verificar HTMLELements', function() {
+        it('isHtmlElement', function() {
             var value = Type.isHtmlElement(1);
 
             expect(value).toBe(false);
@@ -59,7 +59,7 @@ describe("Type", function() {
     }
 
     if (Type.isIterable) {
-        it('isIterable debe verificar iterables', function() {
+        it('isIterable', function() {
             var value = Type.isIterable(['alfa', 'beta']);
 
             expect(value).toBe(true);
@@ -67,7 +67,7 @@ describe("Type", function() {
     }
 
     if (Type.isNumber) {
-        it('isNumber debe verificar numeros', function() {
+        it('isNumber', function() {
             var value = Type.isNumber(1);
 
             expect(value).toBe(true);
@@ -75,7 +75,7 @@ describe("Type", function() {
     }
 
     if (Type.isNumeric) {
-        it('isNumeric debe verificar numericos', function() {
+        it('isNumeric', function() {
             var value = Type.isNumeric('1.2');
 
             expect(value).toBe(true);
@@ -83,7 +83,7 @@ describe("Type", function() {
     }
 
     if (Type.isObject) {
-        it('isObject debe verificar objetos', function() {
+        it('isObject', function() {
             var value = Type.isObject({});
 
             expect(value).toBe(true);
@@ -91,7 +91,7 @@ describe("Type", function() {
     }
 
     if (Type.isString) {
-        it('isString debe verificar strings', function() {
+        it('isString', function() {
             var value = Type.isString('');
 
             expect(value).toBe(true);
@@ -99,10 +99,11 @@ describe("Type", function() {
     }
 
     if (Type.isTextNode) {
-        it('isTextNode debe verificar TextNodes', function() {
+        it('isTextNode', function() {
             var value = Type.isTextNode(1);
 
             expect(value).toBe(false);
         });
     }
 });
+*/

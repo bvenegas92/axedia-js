@@ -15,8 +15,8 @@ define([
      * @return {Boolean} `true` en caso de no detener el ciclo, `index` de lo contrario
      */
     $.Array.each = function(array, fn, scope, reverse) {
-        var i,
-        ln = array.length;
+        var ln = array.length,
+            i;
 
         if (reverse !== true) {
             for (i = 0; i < ln; i++) {

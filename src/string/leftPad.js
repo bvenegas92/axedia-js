@@ -11,6 +11,7 @@ define([
      */
     $.String.leftPad = function(string, size, character) {
         var result = String(string);
+
         character = character || " ";
         while (result.length < size) {
             result = character + result;

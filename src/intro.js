@@ -1,1 +1,1 @@
-(function(global, namespace){
+(function(){

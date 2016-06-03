@@ -9,7 +9,7 @@ define([
      * @return {String} JSON String
      */
     $.JSON.encode = (function(o) {
-        var hasNative = global.JSON && JSON.toString() === "[object JSON]";
+        var hasNative = ROOT.JSON && JSON.toString() === "[object JSON]";
 
         return function(o) {
             if (hasNative) {

@@ -1,19 +1,14 @@
 define([
     "./class",
+    "./find",
     "../array/each",
-    "../array/slice",
     "../array/merge",
-    "../array/map",
-    "../type/isFunction",
-    "../type/isArray",
-    "../type/isObject",
     "../object/merge",
     "../object/chain",
-    "./validateClassName",
-    "./find"
+    "./validateClassName"
 ], function() {
     /**
-     * Define una clase usando un nombre con el patron `Namespace.Subnamespace.Class` y un objeto que servira como
+     * Define una clase usando un nombre con el patron `Nombre/DeLa/Clase` y un objeto que servira como
      * prototipo de las nuevas instancias.
      *
      * El prototipo puede llevar cualquier propiedad excepto algunas que son reservadas para uso interno, dichas
@@ -25,16 +20,26 @@ define([
      *
      * @param {String} className Nombre de la clase
      * @param {Object} classPrototype Prototipo para las instancias
+     * @throws {Error} Lanza un error si la ya existe una propiedad con el nombre de la clase
+     * @throws {Error} Lanza un error si la propiedad donde se agregara la clase no es Function|Array|Object
+     * @return {Function} Retorna el constructor de la nueva clase
      */
     $.Class.define = function(className, classPrototype) {
         var classConstructor;
 
         // valida el nombre de la clase
         $.Class.validateClassName(className);
+
+        // valida si la clase ya existe
+        if ($.Class.find(className, true)) {
+            throw new Error("La clase \"" + className + "\" ya existe");
+        }
         // crea el constructor
         classConstructor = _createConstructor();
-        // crea el namespace
-        _createNamespace();
+
+        // asigna la clase al entorno
+        $[className] = classConstructor;
+
         // busca/carga las dependencias
         _findOrLoadDependencies();
 
@@ -46,7 +51,7 @@ define([
         function _findOrLoadDependencies() {
             var requireArray, parentClass;
 
-            if ($.Class.isRequireJSAvailable()) {
+            if ($.EXISTE_REQUIREJS) {
                 // si RequireJS esta disponible carga las clases requeridas
                 // valida la clase padre
                 if (classPrototype.extend) {
@@ -57,9 +62,6 @@ define([
                     $.Array.each(classPrototype.require, $.Class.validateClassName);
                 }
                 requireArray = $.Array.merge([], classPrototype.extend || [], classPrototype.require || []);
-                requireArray = $.Array.map(requireArray, function(item) {
-                    return item.replace(/\./g, "/");
-                });
                 // define la nueva clase usando RequireJS
                 define(requireArray, _createPrototypeChain);
             } else {
@@ -94,47 +96,6 @@ define([
             return constructor;
         }
 
-        // crea el namespace y asigna el constructor
-        function _createNamespace() {
-            var ref = GLOBAL,
-            pieces = className.split("."),
-            ln = pieces.length;
-
-            $.Array.each(pieces, function(name, index) {
-                if (index === ln - 1) {
-                    // solo un nivel (e.g. "ExampleClass")
-                    if (name in ref) {
-                        // si existe la propiedad en el objeto marca error (incluye la cadena de prototipo)
-                        throw new Error("[" + namespace + ".Class] La propiedad \"" + name + "\" ya existe");
-                    } else {
-                        ref[name] = classConstructor; // crea el constructor
-                    }
-                } else {
-                    // dos niveles o mas (e.g. "Namespace.ExampleClass")
-                    if (name in ref) {
-                        if (!$.Type.isFunction(ref[name]) &&
-                            !$.Type.isArray(ref[name]) &&
-                            !$.Type.isObject(ref[name])) {
-                            // necesita ser Function|Array|Object para poder agregar una propiedad
-                            throw new Error("[" + namespace + ".Class] La propiedad \"" +
-                                $.Array.slice(pieces, 0, index + 1).join(".") +
-                                "\" debe ser del tipo Function, Array u Object " +
-                                "para crear el nombre de clase proporcionado, en su lugar " +
-                                "type \"" + (typeof ref) + "\" fue encontrado."
-                            );
-                        } else {
-                            // si ya existe guarda la referencia
-                            ref = ref[name];
-                        }
-                    } else {
-                        // si no existe crea un objeto para continuar la cade de namespace y guarda la referencia
-                        ref[name] = {};
-                        ref = ref[name];
-                    }
-                }
-            });
-        }
-
         function _createPrototypeChain(parentClass) {
             // prototipo del padre
             if (parentClass) {
@@ -144,6 +105,14 @@ define([
 
             // prototipo de clase
             $.Object.merge(classConstructor.prototype, classPrototype, {$className: className});
+
+            // funciones estaticas
+            if (classPrototype.statics) {
+                $.Object.merge(classConstructor, classPrototype.statics);
+            }
+
+            // remueve `statics` del prototipo
+            delete classConstructor.prototype.statics;
 
             return classConstructor;
         }

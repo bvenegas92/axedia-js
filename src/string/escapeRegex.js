@@ -9,6 +9,7 @@ define([
      */
     $.String.escapeRegex = function(string) {
         var escapeRegexRe = /([-.*+?\^${}()|\[\]\/\\])/g;
+
         return string.replace(escapeRegexRe, "\\$1");
     };
 });

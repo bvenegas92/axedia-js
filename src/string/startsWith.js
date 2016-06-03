@@ -11,6 +11,7 @@ define([
      */
     $.String.startsWith = function(s, start, ignoreCase) {
         var result;
+
         if (s === null || s === undefined || start === null || start === undefined) {
             return false;
         }

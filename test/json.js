@@ -1,4 +1,4 @@
-describe("JSON", function() {
+/*describe("JSON", function() {
     var obj;
 
     beforeEach(function() {
@@ -13,7 +13,7 @@ describe("JSON", function() {
     });
 
     if (JSON.decode) {
-        it('encode debe decodificar', function() {
+        it('decode', function() {
             var value = JSON.decode('{"n": 1, "s": "str"}');
 
             expect(value).toEqual({n: 1, s: "str"});
@@ -21,10 +21,11 @@ describe("JSON", function() {
     }
 
     if (JSON.encode) {
-        it('encode debe codificar', function() {
+        it('encode', function() {
             var value = JSON.encode(obj);
 
             expect(typeof value).toEqual('string');
         });
     }
 });
+*/

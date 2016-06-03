@@ -9,6 +9,7 @@ define([
      */
     $.Date.getFirstDayOfMonth = function(date) {
         var day = (date.getDay() - (date.getDate() - 1)) % 7;
+
         return (day < 0) ? (day + 7) : day;
     };
 });

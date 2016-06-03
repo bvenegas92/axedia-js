@@ -1,6 +1,6 @@
-describe("String", function() {
+/*describe("String", function() {
     if (String.capitalize) {
-        it('capitalize debe convertir a mayuscula', function() {
+        it('capitalize', function() {
             var capitalize = String.capitalize('alfa');
 
             expect(capitalize).toEqual('Alfa');
@@ -8,7 +8,7 @@ describe("String", function() {
     }
 
     if (String.ellipsis) {
-        it('ellipsis debe truncar', function() {
+        it('ellipsis', function() {
             var ellipsis = String.ellipsis('alfa, beta, gamma & delta', 10, true);
 
             expect(ellipsis).toEqual('alfa,...');
@@ -16,7 +16,7 @@ describe("String", function() {
     }
 
     if (String.endsWith) {
-        it('endsWith debe verificar al final', function() {
+        it('endsWith', function() {
             var endsWith = String.endsWith('alfa, beta, gamma & delta', 'delta');
 
             expect(endsWith).toBe(true);
@@ -24,7 +24,7 @@ describe("String", function() {
     }
 
     if (String.insert) {
-        it('insert debe insertar', function() {
+        it('insert', function() {
             var insert = String.insert('alfa', '-', 2);
 
             expect(insert).toBe('al-fa');
@@ -32,7 +32,7 @@ describe("String", function() {
     }
 
     if (String.leftPad) {
-        it('leftPad debe rellenar por la izquierda', function() {
+        it('leftPad', function() {
             var leftPad = String.leftPad('alfa', 10, '-');
 
             expect(leftPad).toBe('------alfa');
@@ -40,7 +40,7 @@ describe("String", function() {
     }
 
     if (String.random) {
-        it('random debe generar un string que haga match con [a-zA-Z0-9]{1, 32}', function() {
+        it('random[a-zA-Z0-9]{1, 32}', function() {
             var string = String.random();
 
             expect(string).toMatch(/[a-zA-Z0-9]{1,32}/);
@@ -48,7 +48,7 @@ describe("String", function() {
     }
 
     if (String.repeat) {
-        it('repeat debe repetir', function() {
+        it('repeat', function() {
             var repeat = String.repeat('alfa', 3, '-');
 
             expect(repeat).toBe('alfa-alfa-alfa');
@@ -56,7 +56,7 @@ describe("String", function() {
     }
 
     if (String.splitWords) {
-        it('splitWords debe separar palabras', function() {
+        it('splitWords', function() {
             var words = String.splitWords('alfa beta  gamma   delta');
 
             expect(words).toEqual(['alfa', 'beta', 'gamma', 'delta']);
@@ -64,7 +64,7 @@ describe("String", function() {
     }
 
     if (String.startsWith) {
-        it('startsWith debe verificar al principio', function() {
+        it('startsWith', function() {
             var startsWith = String.startsWith('alfa, beta, gamma & delta', 'alfa');
 
             expect(startsWith).toBe(true);
@@ -72,7 +72,7 @@ describe("String", function() {
     }
 
     if (String.toggle) {
-        it('toggle debe alternar', function() {
+        it('toggle', function() {
             var toggle = String.toggle('alfa', 'beta', 'alfa');
 
             expect(toggle).toEqual('beta');
@@ -80,7 +80,7 @@ describe("String", function() {
     }
 
     if (String.trim) {
-        it('trim debe eliminar espacions', function() {
+        it('trim', function() {
             var trim = String.trim('   alfa   ');
 
             expect(trim).toEqual('alfa');
@@ -88,10 +88,11 @@ describe("String", function() {
     }
 
     if (String.uncapitalize) {
-        it('uncapitalize debe eliminar espacions', function() {
+        it('uncapitalize', function() {
             var uncapitalize = String.uncapitalize('Alfa');
 
             expect(uncapitalize).toEqual('alfa');
         });
     }
 });
+*/

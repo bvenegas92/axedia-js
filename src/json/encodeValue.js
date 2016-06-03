@@ -16,17 +16,17 @@ define([
      */
     $.JSON.encodeValue = (function(o, newline) {
         var useHasOwn = !!{}.hasOwnProperty,
-        m = {
-            "\b": "\\b",
-            "\t": "\\t",
-            "\n": "\\n",
-            "\f": "\\f",
-            "\r": "\\r",
-            '"': '\\"',
-            "\\": "\\\\",
-            "\x0b": "\\u000b" //ie doesn"t handle \v
-        },
-        charToReplace = /[\\\"\x00-\x1f\x7f-\uffff]/g;
+            m = {
+                "\b": "\\b",
+                "\t": "\\t",
+                "\n": "\\n",
+                "\f": "\\f",
+                "\r": "\\r",
+                '"': '\\"',
+                "\\": "\\\\",
+                "\x0b": "\\u000b" //ie doesn"t handle \v
+            },
+            charToReplace = /[\\\"\x00-\x1f\x7f-\uffff]/g;
 
         function pad(n) {
             return n < 10 ? "0" + n : n;
@@ -48,6 +48,7 @@ define([
         function encodeString(s) {
             return "\"" + s.replace(charToReplace, function(a) {
                 var c = m[a];
+
                 return typeof c === "string" ? c : "\\u" + ("0000" + a.charCodeAt(0).toString(16)).slice(-4);
             }) + "\"";
         }
@@ -77,6 +78,7 @@ define([
             var a = ["[", ""], // Note empty string in case there are no serializable members.
                 len = o.length,
                 i;
+
             for (i = 0; i < len; i += 1) {
                 a.push($.JSON.encodeValue(o[i]), ",");
             }
@@ -115,6 +117,7 @@ define([
 
             var a = ["{", ""], // Note empty string in case there are no serializable members.
                 i, val;
+
             for (i in o) {
                 val = o[i];
                 if (!useHasOwn || o.hasOwnProperty(i)) {

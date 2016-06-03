@@ -11,6 +11,7 @@ define([
      */
     $.Date.between = function(date, start, end) {
         var t = date.getTime();
+
         return start.getTime() <= t && t <= end.getTime();
     };
 });

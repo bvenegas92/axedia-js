@@ -9,8 +9,8 @@ define([
      * @return {Number} Numero de dias en el mes
      */
     $.Date.getDaysInMonth = function(date) {
-        var daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-        var m = date.getMonth();
+        var daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
+            m = date.getMonth();
 
         return m === 1 && $.Date.isLeapYear(date) ? 29 : daysInMonth[m];
     };

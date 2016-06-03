@@ -1,4 +1,4 @@
-describe("Array", function() {
+/*describe("Array", function() {
     var items = [];
 
     beforeEach(function() {
@@ -6,7 +6,7 @@ describe("Array", function() {
     });
 
     if (Array.clean) {
-        it('clean debe evitar vacios', function() {
+        it('clean', function() {
             var newItems = Array.clean(['alfa', 'beta', 'gamma', 'delta', '']);
 
             expect(items).toEqual(newItems);
@@ -14,7 +14,7 @@ describe("Array", function() {
     }
 
     if (Array.clone) {
-        it('clone debe clonar sin referenciar', function() {
+        it('clone', function() {
             var newItems = Array.clone(items);
 
             expect(newItems == items).toBe(false);
@@ -22,7 +22,7 @@ describe("Array", function() {
     }
 
     if (Array.contains) {
-        it('contains debe verificar si lo contiene', function() {
+        it('contains', function() {
             var contains = Array.contains(items, 'alfa');
 
             expect(contains).toBe(true);
@@ -30,7 +30,7 @@ describe("Array", function() {
     }
 
     if (Array.difference) {
-        it('difference debe verificar las diferencias', function() {
+        it('difference', function() {
             var difference = Array.difference(items, ['alfa', 'beta']);
 
             expect(difference).toEqual(['gamma', 'delta']);
@@ -38,7 +38,7 @@ describe("Array", function() {
     }
 
     if (Array.each) {
-        it('each debe invocar 4 veces la funcion', function() {
+        it('each', function() {
             var on = {
                 each: function(item, index) {
                 }
@@ -51,7 +51,7 @@ describe("Array", function() {
     }
 
     if (Array.erase) {
-        it('erase debe eliminar', function() {
+        it('erase', function() {
             var erase = Array.erase(items, 1, 2);
 
             expect(erase).toEqual(['alfa', 'delta']);
@@ -59,7 +59,7 @@ describe("Array", function() {
     }
 
     if (Array.every) {
-        it('every debe retornar true', function() {
+        it('every', function() {
             var every = Array.every(items, function(item) {
                 return /alfa|beta|gamma|delta/.test(item);
             });
@@ -69,7 +69,7 @@ describe("Array", function() {
     }
 
     if (Array.filter) {
-        it('filter debe filtrar', function() {
+        it('filter', function() {
             var filter = Array.filter(items, function(item) {
                 return /alfa|delta/.test(item);
             });
@@ -79,7 +79,7 @@ describe("Array", function() {
     }
 
     if (Array.findBy) {
-        it('findBy debe encontrar un elemento', function() {
+        it('findBy', function() {
             var find = Array.findBy(items, function(item) {
                 return item === 'beta';
             });
@@ -89,7 +89,7 @@ describe("Array", function() {
     }
 
     if (Array.flatten) {
-        it('flatten debe aplanar', function() {
+        it('flatten', function() {
             var flatten = Array.flatten([
                 'alfa',
                 [
@@ -108,7 +108,7 @@ describe("Array", function() {
     }
 
     if (Array.from) {
-        it('from debe convertir', function() {
+        it('from', function() {
             var from = Array.from('alfa');
 
             expect(from).toEqual(['alfa']);
@@ -116,7 +116,7 @@ describe("Array", function() {
     }
 
     if (Array.include) {
-        it('include debe incluir sin duplicar', function() {
+        it('include', function() {
             var include = ['alfa', 'beta', 'gamma'];
             Array.include(include, 'delta');
 
@@ -125,7 +125,7 @@ describe("Array", function() {
     }
 
     if (Array.indexOf) {
-        it('indexOf debe ser 1', function() {
+        it('indexOf', function() {
             var index;
 
             index = Array.indexOf(items, 'beta');
@@ -134,7 +134,7 @@ describe("Array", function() {
     }
 
     if (Array.insert) {
-        it('insert debe insertar', function() {
+        it('insert', function() {
             var insert = ['alfa', 'beta', 'gamma'];
             insert = Array.insert(insert, 2, ['delta']);
 
@@ -143,7 +143,7 @@ describe("Array", function() {
     }
 
     if (Array.intersect) {
-        it('intersect debe intersectar', function() {
+        it('intersect', function() {
             var arr1 = ['alfa', 'beta', 'gamma'],
             arr2 = ['alfa', 'delta'],
             arr3 = ['alfa', 'gamma'];
@@ -154,7 +154,7 @@ describe("Array", function() {
     }
 
     if (Array.map) {
-        it('map debe agregar el prefijo "item_" a los elementos', function() {
+        it('map"item_" a los elementos', function() {
             var newItems = Array.map(items, function(item) {
                 return 'item_' + item;
             });
@@ -164,7 +164,7 @@ describe("Array", function() {
     }
 
     if (Array.max) {
-        it('max debe obtener el maximo', function() {
+        it('max', function() {
             var max = Array.max([1, 2, 3]);
 
             expect(max).toEqual(3);
@@ -172,7 +172,7 @@ describe("Array", function() {
     }
 
     if (Array.mean) {
-        it('mean debe promediar', function() {
+        it('mean', function() {
             var mean = Array.mean([1, 2, 3]);
 
             expect(mean).toEqual(2);
@@ -180,7 +180,7 @@ describe("Array", function() {
     }
 
     if (Array.merge) {
-        it('merge debe unir todos los arreglos', function() {
+        it('merge', function() {
             var newItems = Array.merge(items, ['a', 'b', 'c'], ['a', 1, 2, 3]);
 
             expect(newItems).toEqual(['alfa', 'beta', 'gamma', 'delta', 'a', 'b', 'c', 1, 2, 3]);
@@ -188,7 +188,7 @@ describe("Array", function() {
     }
 
     if (Array.min) {
-        it('min debe obtener el minimo', function() {
+        it('min', function() {
             var min = Array.min([1, 2, 3]);
 
             expect(min).toEqual(1);
@@ -196,7 +196,7 @@ describe("Array", function() {
     }
 
     if (Array.pluck) {
-        it('pluck debe tomar la propiedad', function() {
+        it('pluck', function() {
             var pluck = Array.pluck([
                 {
                     alfa: 'a',
@@ -217,7 +217,7 @@ describe("Array", function() {
     }
 
     if (Array.push) {
-        it('push debe agregar al final', function() {
+        it('push', function() {
             var push = Array.push(items, 'epsilon');
 
             expect(push).toEqual(['alfa', 'beta', 'gamma', 'delta', 'epsilon']);
@@ -225,7 +225,7 @@ describe("Array", function() {
     }
 
     if (Array.remove) {
-        it('remove debe remover', function() {
+        it('remove', function() {
             var remove = Array.remove(items, 'alfa');
 
             expect(remove).toEqual(['beta', 'gamma', 'delta']);
@@ -233,7 +233,7 @@ describe("Array", function() {
     }
 
     if (Array.replace) {
-        it('replace debe remplazar', function() {
+        it('replace', function() {
             var replace = Array.replace(items, 1, 2, ['a', 'b', 'c']);
 
             expect(replace).toEqual(['alfa', 'a', 'b', 'c', 'delta']);
@@ -241,7 +241,7 @@ describe("Array", function() {
     }
 
     if (Array.slice) {
-        it('slice debe partir el arreglo', function() {
+        it('slice', function() {
             var newItems = Array.slice(items, 0, 2);
 
             expect(newItems).toEqual(['alfa', 'beta']);
@@ -249,7 +249,7 @@ describe("Array", function() {
     }
 
     if (Array.some) {
-        it('some debe retornar true', function() {
+        it('some', function() {
             var some = Array.some(items, function(item) {
                 return /alfa|beta|gamma|delta/.test(item);
             });
@@ -259,7 +259,7 @@ describe("Array", function() {
     }
 
     if (Array.sort) {
-        it('sort debe ordenar', function() {
+        it('sort', function() {
             var sort = Array.sort(items);
 
             expect(sort).toEqual(['alfa', 'beta', 'delta', 'gamma']);
@@ -267,7 +267,7 @@ describe("Array", function() {
     }
 
     if (Array.splice) {
-        it('splice debe empalmar', function() {
+        it('splice', function() {
             Array.splice(items, 2, 1, 'epsilon');
 
             expect(items).toEqual(['alfa', 'beta', 'epsilon', 'delta']);
@@ -275,7 +275,7 @@ describe("Array", function() {
     }
 
     if (Array.sum) {
-        it('sum debe sumar', function() {
+        it('sum', function() {
             var sum = Array.sum([1, 2, 3]);
 
             expect(sum).toEqual(6);
@@ -283,7 +283,7 @@ describe("Array", function() {
     }
 
     if (Array.toArray) {
-        it('toArray debe convertir', function() {
+        it('toArray', function() {
             var toArray = Array.toArray('alfa');
 
             expect(toArray).toEqual(['a', 'l', 'f', 'a']);
@@ -291,7 +291,7 @@ describe("Array", function() {
     }
 
     if (Array.toMap) {
-        it('toMap debe mapear', function() {
+        it('toMap', function() {
             var toMap = Array.toMap(items);
 
             expect(toMap).toEqual({
@@ -304,7 +304,7 @@ describe("Array", function() {
     }
 
     if (Array.toValueMap) {
-        it('toValueMap debe mapear', function() {
+        it('toValueMap', function() {
             var toValueMap = Array.toValueMap(items);
 
             expect(toValueMap).toEqual({
@@ -317,10 +317,11 @@ describe("Array", function() {
     }
 
     if (Array.unique) {
-        it('unique debe evitar duplicados', function() {
+        it('unique', function() {
             var newItems = Array.unique(['alfa', 'beta', 'gamma', 'alfa', 'delta']);
 
             expect(items).toEqual(newItems);
         });
     }
 });
+*/

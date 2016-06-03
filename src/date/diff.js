@@ -19,6 +19,7 @@ define([
      */
     $.Date.diff = function(min, max, unit) {
         var est, diff = +max - min;
+
         switch (unit) {
             case $.Date.MILLI:
                 return diff;
