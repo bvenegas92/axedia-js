@@ -101,10 +101,13 @@ module.exports = function(grunt) {
         i;
 
         if (subtask === 'create') {
-            // crea un archivo define para poder realizar el build
-            for (i = 0; i < modules.length; i++) {
-                findModule(modules[i]);
-            }
+            dependencies = modules.map(function(item) {
+                if (/^(src\/|\.\/)/.test(item)) {
+                    return item.replace(/^(src\/|\.\/)/, "./");
+                } else {
+                    return "./" + item;
+                }
+            });
             dependencies = dependencies.map(function(item) { return '"' + item + '"'; });
             grunt.file.write('src/tmp_builder.js', 'define([' + dependencies.join(',') + ']);');
             grunt.task.run('build:compile');
@@ -117,27 +120,6 @@ module.exports = function(grunt) {
             // remueve saltos de linea multiples y elimina el archivo temporal
             removeSpaces('dist/' + config.name);
             grunt.file.delete('src/tmp_builder.js');
-        }
-
-        // encuentra todos los archivos de un modulo
-        function findModule(module) {
-            var files, i;
-
-            // parse a camelCase
-            module = module.split('.').map(function(item) {
-                return item.charAt(0).toLowerCase() + item.substr(1);
-            }).join('/');
-            module = module.indexOf('src/') !== -1 ? module : 'src/' + module;
-
-            if (grunt.file.isDir(module)) {
-                console.log(module);
-                files = grunt.file.expand(module + '/**/*.js');
-                for (i = 0; i < files.length; i++) {
-                    dependencies.push(files[i].replace('src', '.'));
-                }
-            } else if (grunt.file.isFile(module + '.js')) {
-                dependencies.push(module.replace('src', '.'));
-            }
         }
     });
 
