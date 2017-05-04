@@ -9,6 +9,7 @@ module.exports = function(grunt) {
                     'src/**/*.js', 'Gruntfile.js'
                 ],
                 options: {
+                    reporter: require('jshint-stylish'),
                     jshintrc: true
                 }
             }
@@ -17,21 +18,22 @@ module.exports = function(grunt) {
             src: 'src',
             gruntfile: 'Gruntfile.js',
             options: {
-                config: '.jscsrc'
+                config: '.jscsrc',
+                reporter: require('jscs-stylish').path
             }
         },
         watch: { // observar cambios en codigo
-            axd: {
+            src: {
                 files: [
                     'src/**/*.js',
                     '!src/tmp_builder.js',
                     'Gruntfile.js'
                 ],
-                tasks: ['style', 'build', 'karma:dev:run']
+                tasks: ['style', 'build', "karma:dev:run"]
             },
             test: {
                 files: ['test/**/*.js'],
-                tasks: ['karma:dev:run']
+                tasks: ["karma:dev:run"]
             }
         },
         requirejs: { // compilacion
@@ -84,7 +86,7 @@ module.exports = function(grunt) {
 
     function removeSpaces(file) {
         var contents = grunt.file.read(file); // archivo a editar
-        // Remuve saltos de linea multiple
+        // Remueve saltos de linea multiple
         contents = contents.replace(/\n{2,}/g, '');
         // Remueve saltos de linea entre declaraciones de variables;
         contents = contents.replace(/(var.[^;]*;)\s+\n(?=\s*var)/g, '$1\n');
@@ -123,7 +125,7 @@ module.exports = function(grunt) {
         }
     });
 
-    grunt.registerTask('style', ['jshint', 'jscs']); // estilo y validación del codigo
-    grunt.registerTask('dev', ['style', 'build', 'karma:dev:start','watch']); // desarrollo
-    grunt.registerTask('default', ['dev']);
+    grunt.registerTask("style", ["jshint", "jscs"]); // estilo y validación del codigo
+    grunt.registerTask('dev', ['style', 'build', "karma:dev:start", "watch"]); // desarrollo y testing
+    grunt.registerTask("default", ["dev"]);
 };

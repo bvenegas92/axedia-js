@@ -1,6 +1,6 @@
 define([
-    "../lang/String",
-    "../lang/Number",
+    "lang/String",
+    "lang/Number",
     "./Convert"
 ], function(Number, Convert) {
 /**
@@ -99,8 +99,8 @@ Color.RGBToHex = function(r, g, b) {
  */
 Color.HSLToRGB = function(h, s, l) {
     h = (h >= 0 ? h : 360 - (-h % 360)) % 360;
-    s = Number.constrain(Number.decimalAdjust(s, 4), 0, 1);
-    l = Number.constrain(Number.decimalAdjust(l, 4), 0, 1);
+    s = Number.constrain(Number.round(s, 4), 0, 1);
+    l = Number.constrain(Number.round(l, 4), 0, 1);
 
     var C, X, m,
         rgb = [];
@@ -159,7 +159,7 @@ Color.HSLToHex = function(h, s, l) {
 
     var rgb = Color.HSLToRGB(h, s, l);
 
-    return Color.RGBToHex(rgb[0], rgb[1], rgb[2]);
+    return Color.RGBToHex.apply(this, rgb);
 };
 
 /**
@@ -203,7 +203,7 @@ Color.HexToRGB = function(hex) {
 Color.HexToHSL = function(hex) {
     var rgb = Color.HexToRGB(hex);
 
-    return Color.RGBToHSL(rgb[0], rgb[1], rgb[2]);
+    return Color.RGBToHSL.apply(this, rgb);
 };
 
 /**
@@ -486,4 +486,7 @@ Color.prototype.getAdic = function(slices) {
 Color.prototype.toString = function() {
     return this.getHex();
 };
+
+return Color;
+
 });

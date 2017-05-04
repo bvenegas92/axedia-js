@@ -1,4 +1,4 @@
-/*describe("Array", function() {
+describe("Array", function() {
     var items = [];
 
     beforeEach(function() {
@@ -6,27 +6,27 @@
     });
 
     it('clean', function() {
-        var newItems = Array.clean(['alfa', 'beta', 'gamma', 'delta', '']);
+        var value = Array.clean(['alfa', 'beta', 'gamma', 'delta', '']);
 
-        expect(items).toEqual(newItems);
+        expect(value).toEqual(items);
     });
 
     it('clone', function() {
-        var newItems = Array.clone(items);
+        var value = Array.clone(items);
 
-        expect(newItems == items).toBe(false);
+        expect(value == items).toBe(false);
     });
 
     it('contains', function() {
-        var contains = Array.contains(items, 'alfa');
+        var value = Array.contains(items, 'alfa');
 
-        expect(contains).toBe(true);
+        expect(value).toBe(true);
     });
 
     it('difference', function() {
-        var difference = Array.difference(items, ['alfa', 'beta']);
+        var value = Array.difference(items, ['alfa', 'beta']);
 
-        expect(difference).toEqual(['gamma', 'delta']);
+        expect(value).toEqual(['gamma', 'delta']);
     });
 
     it('each', function() {
@@ -41,68 +41,82 @@
     });
 
     it('erase', function() {
-        var erase = Array.erase(items, 1, 2);
+        var value = Array.erase(items, 1, 2);
 
-        expect(erase).toEqual(['alfa', 'delta']);
+        expect(value).toEqual(['alfa', 'delta']);
     });
 
     it('findBy', function() {
-        var find = Array.findBy(items, function(item) {
+        var value = Array.findBy(items, function(item) {
             return item === 'beta';
         });
 
-        expect(find).toEqual('beta');
+        expect(value).toEqual('beta');
+    });
+
+    it('from', function() {
+        var value = Array.from(items);
+
+        expect(value).toEqual(items);
+    });
+
+    it('indexBy', function() {
+        var value = Array.indexBy(items, function(item) {
+            return item === 'beta';
+        });
+
+        expect(value).toEqual(1);
     });
 
     it('include', function() {
-        var include = ['alfa', 'beta', 'gamma'];
-        Array.include(include, 'delta');
+        var value = ['alfa', 'beta', 'gamma'];
+        Array.include(value, 'delta');
 
-        expect(include).toEqual(items);
+        expect(value).toEqual(items);
     });
 
     it('insert', function() {
-        var insert = ['alfa', 'beta', 'gamma'];
-        insert = Array.insert(insert, 2, ['delta']);
+        var value = ['alfa', 'beta', 'gamma'];
+        value = Array.insert(value, 2, ['delta']);
 
-        expect(insert).toEqual(['alfa', 'beta', 'delta', 'gamma']);
+        expect(value).toEqual(['alfa', 'beta', 'delta', 'gamma']);
     });
 
     it('intersect', function() {
         var arr1 = ['alfa', 'beta', 'gamma'],
-        arr2 = ['alfa', 'delta'],
-        arr3 = ['alfa', 'gamma'];
-        intersect = Array.intersect(arr1, arr2, arr3);
+            arr2 = ['alfa', 'delta'],
+            arr3 = ['alfa', 'gamma'],
+            value = Array.intersect(arr1, arr2, arr3);
 
-        expect(intersect).toEqual(['alfa']);
+        expect(value).toEqual(['alfa']);
     });
 
-    it('maxBy', function() {
-        var max = Array.maxBy([1, 2, 3]);
+    it('max', function() {
+        var value = Array.max([1, 2, 3]);
 
-        expect(max).toEqual(3);
+        expect(value).toEqual(3);
     });
 
     it('mean', function() {
-        var mean = Array.mean([1, 2, 3]);
+        var value = Array.mean([1, 2, 3]);
 
-        expect(mean).toEqual(2);
+        expect(value).toEqual(2);
     });
 
     it('merge', function() {
-        var newItems = Array.merge(items, ['a', 'b', 'c'], ['a', 1, 2, 3]);
+        var value = Array.merge(items, ['a', 'b', 'c'], ['a', 1, 2, 3]);
 
-        expect(newItems).toEqual(['alfa', 'beta', 'gamma', 'delta', 'a', 'b', 'c', 1, 2, 3]);
+        expect(value).toEqual(['alfa', 'beta', 'gamma', 'delta', 'a', 'b', 'c', 1, 2, 3]);
     });
 
-    it('minBy', function() {
-        var min = Array.minBy([1, 2, 3]);
+    it('min', function() {
+        var value = Array.min([1, 2, 3]);
 
-        expect(min).toEqual(1);
+        expect(value).toEqual(1);
     });
 
     it('pluck', function() {
-        var pluck = Array.pluck([
+        var value = Array.pluck([
             {
                 alfa: 'a',
                 beta: 'b'
@@ -117,31 +131,36 @@
             }
         ], 'alfa');
 
-        expect(pluck).toEqual(['a', 'a', 'a']);
+        expect(value).toEqual(['a', 'a', 'a']);
     });
 
     it('remove', function() {
-        var remove = Array.remove(items, 'alfa');
+        var value = Array.remove(items, 'alfa');
 
-        expect(remove).toEqual(['beta', 'gamma', 'delta']);
+        expect(value).toEqual(['beta', 'gamma', 'delta']);
+    });
+
+    it('removeAt', function() {
+        var value = Array.removeAt(items, 1);
+
+        expect(value).toEqual(['alfa', 'gamma', 'delta']);
     });
 
     it('replace', function() {
-        var replace = Array.replace(items, 1, 2, ['a', 'b', 'c']);
+        var value = Array.replace(items, 1, 2, ['a', 'b', 'c']);
 
-        expect(replace).toEqual(['alfa', 'a', 'b', 'c', 'delta']);
+        expect(value).toEqual(['alfa', 'a', 'b', 'c', 'delta']);
     });
 
     it('sum', function() {
-        var sum = Array.sum([1, 2, 3]);
+        var value = Array.sum([1, 2, 3]);
 
-        expect(sum).toEqual(6);
+        expect(value).toEqual(6);
     });
 
     it('unique', function() {
-        var newItems = Array.unique(['alfa', 'beta', 'gamma', 'alfa', 'delta']);
+        var value = Array.unique(['alfa', 'beta', 'gamma', 'alfa', 'delta']);
 
-        expect(items).toEqual(newItems);
+        expect(value).toEqual(items);
     });
 });
-*/

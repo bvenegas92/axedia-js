@@ -1,50 +1,89 @@
-/*describe("String", function() {
+describe("String", function() {
     it('ellipsis', function() {
-        var ellipsis = String.ellipsis('alfa, beta, gamma & delta', 10, true);
+        var value = String.ellipsis('alfa, beta, gamma & delta', 10, true);
 
-        expect(ellipsis).toEqual('alfa,...');
+        expect(value).toEqual('alfa,...');
     });
 
-    it('endsWith', function() {
-        var endsWith = String.endsWith('alfa, beta, gamma & delta', 'delta');
+    it('escape', function() {
+        var value = String.escape("axedia's");
 
-        expect(endsWith).toBe(true);
+        expect(value).toEqual("axedia\\'s");
+    });
+
+    it('escapeRegex', function() {
+        var value = String.escapeRegex("axedia{1,3}");
+
+        expect(value).toEqual("axedia\\{1,3\\}");
+    });
+
+    it('insert', function() {
+        var value = String.insert("alfaomega", " & ", 4);
+
+        expect(value).toEqual("alfa & omega");
     });
 
     it('leftPad', function() {
-        var leftPad = String.leftPad('alfa', 10, '-');
+        var value = String.leftPad('alfa', 10, '-');
 
-        expect(leftPad).toBe('------alfa');
+        expect(value).toBe('------alfa');
     });
 
     it('rightPad', function() {
-        var rightPad = String.rightPad('alfa', 10, '-');
+        var value = String.rightPad('alfa', 10, '-');
 
-        expect(rightPad).toBe('alfa------');
+        expect(value).toBe('alfa------');
     });
 
     it('random', function() {
-        var string = String.random(10);
+        var value = String.random(10);
 
-        expect(string).toMatch(/[a-zA-Z0-9]{1,10}/);
+        expect(value).toMatch(/[a-zA-Z0-9]{1,10}/);
     });
 
     it('splitWords', function() {
-        var words = String.splitWords('alfa beta  gamma   delta');
+        var value = String.splitWords('alfa beta  gamma   delta');
 
-        expect(words).toEqual(['alfa', 'beta', 'gamma', 'delta']);
+        expect(value).toEqual(['alfa', 'beta', 'gamma', 'delta']);
     });
 
     it('startsWith', function() {
-        var startsWith = String.startsWith('alfa, beta, gamma & delta', 'alfa');
+        var value = String.startsWith('alfa, beta, gamma & delta', 'alfa');
 
-        expect(startsWith).toBe(true);
+        expect(value).toBe(true);
     });
 
-    it('trimBlanks', function() {
-        var trim = String.trimBlanks('   alfa   ');
+    it('snakeToCamelCase', function() {
+        var value = String.snakeToCamelCase('snake_to_camel_case');
 
-        expect(trim).toEqual('alfa');
+        expect(value).toEqual('snakeToCamelCase');
+    });
+
+    it('chunk', function() {
+        var value = String.chunk('abcdef');
+
+        expect(value).toEqual(["a", "b", "c", "d", "e", "f"]);
+    });
+
+    it('format', function() {
+        var value = String.format("{0}, {1}, {2}, {3}", "alfa", "beta", "gamma", "delta");
+
+        expect(value).toEqual("alfa, beta, gamma, delta");
+    });
+
+    it('splitParagraphs', function() {
+        var value = String.splitParagraphs(
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            30,
+            true
+        );
+
+        expect(value).toEqual([
+            "Lorem ipsum dolor sit amet,",
+            "consectetur adipiscing elit,",
+            "sed do eiusmod tempor",
+            "incididunt ut labore et dolore",
+            "magna aliqua."
+        ]);
     });
 });
-*/

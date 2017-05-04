@@ -1,34 +1,24 @@
 define([
-    "../util/Type",
+    "./Math",
+    "util/Type",
     "./Number"
-], function(Type, Number) {
+], function(
+    Math,
+    Type,
+    Number
+) {
 /**
- * Realiza un trim a `str` incluyendo " ", \t, \n, \r, \v
+ * Trunca un string y agrega un ellipsis "..." al final si excede la longitud especificada
  *
- * @param {String} str
- * @return {String}
- */
-String.trimBlanks = function(str) {
-    var blanksRegex = /^\s+|\s+$/g;
-
-    if (str) {
-        str = str.replace(blanksRegex, "");
-    }
-    return str || "";
-};
-
-/**
- * Trunca un string y agrega "..." al final si excede la longitud especificada
- *
- * @param {String} str
- * @param {Number} length La longitud maxima del string
+ * @param {String} value String a truncar
+ * @param {Number} length La longitud antes de truncar
  * @param {Boolean} [word] `true` para truncar despues de una palabra
  * @return {String} String truncado
  */
-String.ellipsis = function(str, length, word) {
-    if (str && str.length > length) {
+String.ellipsis = function(value, length, word) {
+    if (value && value.length > length) {
         if (word) {
-            var vs = str.substr(0, length - 2),
+            var vs = value.substr(0, length - 2),
                 index = Math.max(
                     vs.lastIndexOf(" "),
                     vs.lastIndexOf("."),
@@ -40,9 +30,76 @@ String.ellipsis = function(str, length, word) {
                 return vs.substr(0, index) + "...";
             }
         }
-        return str.substr(0, length - 3) + "...";
+        return value.substr(0, length - 3) + "...";
     }
-    return str;
+    return value;
+};
+
+/**
+ * Escape `string`
+ *
+ * @param {String} string String a escape
+ * @return {String} String escaped
+ */
+String.escape = function(string) {
+    var escapeRe = /('|\\)/g;
+
+    return string.replace(escapeRe, "\\$1");
+};
+
+/**
+ * Escape `string` para usarla en un RegExp
+ *
+ * @param {String} string String a escape
+ * @return {String} String escaped
+ */
+String.escapeRegex = function(string) {
+    var escapeRegexRe = /([-.*+?\^${}()|\[\]\/\\])/g;
+
+    return string.replace(escapeRegexRe, "\\$1");
+};
+
+/**
+ * Inserta un substring en un string
+ *
+ * @param {String} s Substring a insertar
+ * @param {String} value String donde insertar
+ * @param {Number} index Indice en cual insertar el substring
+ * @return {String} El string con subtring insertado
+ */
+String.insert = function(s, value, index) {
+    if (!s) {
+        return value;
+    }
+
+    if (!value) {
+        return s;
+    }
+
+    var len = s.length;
+
+    if (!index && index !== 0) {
+        index = len;
+    }
+
+    if (index < 0) {
+        index *= -1;
+        if (index >= len) {
+            // negative overflow, insert at start
+            index = 0;
+        } else {
+            index = len - index;
+        }
+    }
+
+    if (index === 0) {
+        s = value + s;
+    } else if (index >= s.length) {
+        s += value;
+    } else {
+        s = s.substr(0, index) + value + s.substr(index);
+    }
+    return s;
 };
 
 /**
@@ -73,54 +130,15 @@ String.startsWith = function(str, start, ignoreCase) {
 };
 
 /**
- * Verifica si un string termina con determinado substring
- *
- * @param {String} str
- * @param {String} end Substring a verificar
- * @param {Boolean} ignoreCase Ignorar mayusculas
- * @return {Boolean}
- */
-String.endsWith = function(str, end, ignoreCase) {
-    var result;
-
-    if (!Type.isSet(str) || !Type.isSet(end)) {
-        return false;
-    }
-
-    result = end.length <= str.length;
-
-    if (result) {
-        if (ignoreCase) {
-            str = str.toLowerCase();
-            end = end.toLowerCase();
-        }
-        result = str.indexOf(end, str.length - end.length) !== -1;
-    }
-    return result;
-};
-
-/**
- * Escape `string` para usarla en un RegExp
- *
- * @param {String} str
- * @return {String}
- */
-String.escapeRegex = function(str) {
-    var escapeRegexRe = /([-.*+?\^${}()|\[\]\/\\])/g;
-
-    return str.replace(escapeRegexRe, "\\$1");
-};
-
-/**
  * Rellena por la izquierda un string con el caracter especificado
  *
- * @param {String} str
+ * @param {String} string Substring a rellenar
  * @param {Number} size Longitud final
  * @param {String} [character=" "] Caracter de relleno
  * @return {String} String rellenado
  */
-String.leftPad = function(str, size, character) {
-    var result = String(str);
+String.leftPad = function(string, size, character) {
+    var result = String(string);
 
     character = character || " ";
     while (result.length < size) {
@@ -132,13 +150,13 @@ String.leftPad = function(str, size, character) {
 /**
  * Rellena por la derecha un string con el caracter especificado
  *
- * @param {String} str
+ * @param {String} string Substring a rellenar
  * @param {Number} size Longitud final
  * @param {String} [character=" "] Caracter de relleno
  * @return {String} String rellenado
  */
-String.rightPad = function(str, size, character) {
-    var result = String(str);
+String.rightPad = function(string, size, character) {
+    var result = String(string);
 
     character = character || " ";
     while (result.length < size) {
@@ -148,15 +166,15 @@ String.rightPad = function(str, size, character) {
 };
 
 /**
- * Genera un string de la longitud proporcionada tomando los caracteres de una palabra determinada
+ * Genera un string de la longitud proporcionada (min. 1, maximo 1000 caracteres)
+ * tomando los caracteres de una palabra determinada
  *
- * @param {Number} [length=1] Longitud del string
+ * @param {Number} length Longitud del string
  * @param {String} [word=abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789] Palabra fuente
  * @return {String} String generado
  */
 String.random = function(length, word) {
     word = word || "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    length = length || 1;
     var str = "";
 
     for (var i = 0; i < length; i++) {
@@ -168,15 +186,139 @@ String.random = function(length, word) {
 /**
  * Separa un string en palabras
  *
- * @param {String} str
+ * @param {String} words String a separar
  * @return {Array} Array de palabras
  */
-String.splitWords = function(str) {
-    if (str && Type.isString(str)) {
-        return str
+String.splitWords = function(words) {
+    if (words && Type.isString(words)) {
+        return words
             .replace(/^\s+|\s+$/g, "")
             .split(/\s+/);
     }
-    return str || [];
+    return words || [];
 };
+
+/**
+ * Convierte un string `snake_case` a `lowerCamelCase` o `UpperCamelCase`
+ *
+ * @param  {String} snakeString String snake_case
+ * @param  {Boolean} [toUpperCase] `true` para convertir a `UpperCameCase`
+ * @return {String} camelCase String
+ */
+String.snakeToCamelCase = function(snakeString, toUpperCase) {
+    toUpperCase = toUpperCase || false;
+
+    var words = snakeString.split("_"),
+        camelString = "",
+        i;
+
+    for (i = 0; i < words.length; i++) {
+        if (i === 0) {
+            if (toUpperCase) {
+                camelString += words[i].charAt(0).toUpperCase();
+                camelString += words[i].substr(1);
+            } else {
+                camelString += words[i];
+            }
+        } else {
+            camelString += words[i].charAt(0).toUpperCase();
+            camelString += words[i].substr(1);
+        }
+    }
+
+    return camelString;
+};
+
+/**
+ * Parte un string en piezas de tamaño `length` caracteres
+ *
+ * @param  {String} string String a partir
+ * @param  {Number} length Tamaño de las piezas
+ * @param  {Boolean} [reverse] Inicia las piezas desde el final
+ * @return {Array} Piezas
+ */
+String.chunk = function(string, length, reverse) {
+    length = length || 1;
+    reverse = reverse || false;
+
+    var pieces = [],
+        substr = "",
+        i;
+
+    while (string !== "") {
+        if (reverse) {
+            substr = string.substr(-length);
+            string = string.substring(0, string.length - length);
+            pieces.unshift(substr);
+        } else {
+            substr = string.substr(0, length);
+            string = string.substr(length);
+            pieces.push(substr);
+        }
+    }
+
+    return pieces;
+};
+
+/**
+ * Permite definir un tokenized string y pasar un numero arbitrario de argumentos
+ * para remplazar los tokens. Cada token debe ser unico e incrementado con el
+ * formato: {0}, {1}, etc.
+ *
+ * @param {String} format
+ * @param {...Object} values
+ * @return {String}
+ */
+String.format = function(format) {
+    var args = Array.prototype.slice.call(arguments, 1);
+    return format.replace(/\{(\d+)\}/g, function(m, i) {
+        return args[i];
+    });
+};
+
+/**
+ * Separa un string en parrafos
+ *
+ * @param  {String} string
+ * @param  {Number} length Longitud del parrafo
+ * @param  {Boolean} [word=true] Partir parrafos en palabras enteras
+ * @return {String[]}
+ */
+String.splitParagraphs = function(string, length, word) {
+    word = word || true;
+
+    var paragraphs = [],
+        p = "",
+        words;
+
+    if (!word) {
+        return String.chunk(string.trim(), length);
+    }
+
+    words = String.splitWords(string);
+
+    while (words.length > 0) {
+        if ((p.length + words[0].length + 1) > length) {
+            paragraphs.push(p);
+            p = "";
+        }
+
+        if (p === "") {
+            p = words[0];
+        } else if (p !== "") {
+            p = p + " " + words[0];
+        }
+
+        words = words.slice(1);
+
+        if (words.length === 0) {
+            paragraphs.push(p);
+        }
+    }
+
+    return paragraphs;
+};
+
+return String;
+
 });

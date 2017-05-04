@@ -4,6 +4,7 @@
         "lang/Array",
         "lang/Date",
         "lang/Function",
+        "lang/Math",
         "lang/Number",
         "lang/Object",
         "lang/String",

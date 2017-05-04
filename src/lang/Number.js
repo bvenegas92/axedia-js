@@ -1,46 +1,67 @@
 define([
-    "../util/Type"
-], function(Type) {
+    "./Math"
+], function(
+    Math
+) {
 /**
  * Limita un numero al intervalo [min, max]
  *
- * @param {Number} num
+ * @param {Number} number Numero a limitar
  * @param {Number} min Minimo del intervalo
  * @param {Number} max Maximo del intervalo
- * @return {Number}
+ * @return {Number} Numero limitado
  */
-Number.constrain = function(num, min, max) {
-    num = parseFloat(num);
+Number.constrain = function(number, min, max) {
+    number = parseFloat(number);
 
     if (min === null) {
-        min = num;
+        min = number;
     }
     if (max === null) {
-        max = num;
+        max = number;
     }
-    return (num < min) ? min : ((num > max) ? max : num);
+    return (number < min) ? min : ((number > max) ? max : number);
 };
 
 /**
  * Corrige numeros flotantes con punto decimal que tienen un overflow a un valor no-preciso debido
- * a su naturaleza de numeros flotantes, por ejemplo: 0.1 + 0.2
+ * a su naturaleza de numeros flotantes binarios, por ejemplo: 0.1 + 0.2 = 0.30000000000000004
  *
  * Esto corrige los tipos de errores donde un flotante termina con una cadena de decimales grande
  * que normalmente es de 15-16 digitos, esta funcion lo acorta a 12
  *
- * @param {Number} num
- * @return {Number}
+ * @param {Number} n El numero a corregir
+ * @return {Number} El numero correctamente redondeado
  */
-Number.correctFloat = function(num) {
-    return parseFloat(num.toFixed(12));
+Number.correctFloat = function(n) {
+    return parseFloat(n.toFixed(12));
 };
 
 /**
  * Ajusta un numero a `n` decimales. Usando como opciones de ajuste los siguientes tipos:
  *
- * -- "round": e.g.  1.3 -> 1;  1.5 -> 2
- * -- "floor": e.g.  1.3 -> 1;  1.5 -> 1
- * -- "ceil":  e.g.  1.3 -> 2;  1.5 -> 2
+ * **********************************   "round"    **********************************
+ *          -2    -1.5     -1.3     -1     0     1     1.3     1.5     2
+ *           ^      |        |       ^           ^       |      |      ^
+ *           +------+        +-------+           +-------+      +------+
+ *
+ * **********************************   "floor"    **********************************
+ *          -2    -1.5     -1.3     -1     0     1     1.3     1.5     2
+ *           ^      |        |                   ^      |       |
+ *           +------+        |                   +------+       |
+ *           +---------------+                   +--------------+
+ *
+ * **********************************   "trunc"    **********************************
+ *          -2    -1.5     -1.3     -1     0     1     1.3     1.5     2
+ *                  |        |       ^           ^      |       |
+ *                  |        +-------+           +------+       |
+ *                  +----------------+           +--------------+
+ *
+ * **********************************   "ceil"    ***********************************
+ *          -2    -1.5     -1.3     -1     0     1     1.3     1.5     2
+ *                  |        |       ^                  |       |      ^
+ *                  |        +-------+                  |       +------+
+ *                  +----------------+                  +--------------+
  *
  * NOTA: La function `toPrecision` ajusta la longitud de un numero a `n` digitos (el punto decimal no cuenta)
  * agregando `0` y punto decimal si se require. Debido a este comportamiento, esta funcion causa conflicto
@@ -50,84 +71,102 @@ Number.correctFloat = function(num) {
  * cantidad de decimales deseada. Debido a estos comportamientos, esta funcion puede dar resultados no
  * deseados
  *
- * @param {Number} num
+ * @param {Number} value Numero
  * @param {Number} [n=0] Numero de decimales
  * @param {String} [type="round"] Tipo de ajuste
- * @return {Number}
+ * @return {Number} Numero redondeado
  */
-Number.decimalAdjust = function(num, n, type) {
+Number.decimalAdjust = function(value, n, type) {
     n = n || 0;
     type = type || "round";
 
-    num = +num;
-    num = Number.correctFloat(num);
+    value = +value;
+    value = Number.correctFloat(value);
     n = +n;
-    // si `num` no es un numero o `n` no es entero retorna `NaN`
-    if (isNaN(num) || !(typeof n === 'number' && n % 1 === 0)) {
+    // si `value` no es un numero o `n` no es entero retorna `NaN`
+    if (isNaN(value) || !(typeof n === 'number' && n % 1 === 0 && n >= 0)) {
         return NaN;
     }
-    // Separa los decimales sobrantes y realiza el tipo de ajuste deseado
-    num = num.toString().split('e');
-    num = Math[type](+(num[0] + 'e' + (num[1] ? (+num[1] - n) : n)));
-    // Vuelve a convertir a float
-    num = num.toString().split('e');
-    return +(num[0] + 'e' + (num[1] ? (+num[1] + n) : -n));
+    // Avanza el punto decimal a la derecha para realiza el tipo
+    // de ajuste deseado y eliminar los decimales sobrantes
+    value = value.toString().split('e');
+    value = Math[type](+(value[0] + 'e' + ((value[1] ? +value[1] : 0) + n)));
+    // Regresa el punto decimal a su lugar original y
+    // vuelve a convertir a float
+    value = value.toString().split('e');
+    return +(value[0] + 'e' + ((value[1] ? +value[1] : 0) - n));
 };
 
 /**
- * Redondea `num` a `n` decimales
+ * Trunca un numero a `n` decimales (ver @Number.decimalAdjust)
  *
- * @param  {Number} num
- * @param  {Number} n Numero de decimales
+ * @param  {Number} value
+ * @param  {Number} n
  * @return {Number}
  */
-Number.round = function(num, n) {
-    return Number.decimalAdjust(num, n, "round");
+Number.trunc = function(value, n) {
+    return Number.decimalAdjust(value, n, "trunc");
 };
 
 /**
- * Trunca `num` a `n` decimales
+ * Redondea un numero a `n` decimales (ver @Number.decimalAdjust)
  *
- * @param  {Number} num
- * @param  {Number} n Numero de decimales
+ * @param  {Number} value
+ * @param  {Number} n
  * @return {Number}
  */
-Number.truncate = function(num, n) {
-    return Number.decimalAdjust(num, n, "floor");
+Number.round = function(value, n) {
+    return Number.decimalAdjust(value, n, "round");
 };
 
 /**
- * Redondea arriba `num` a `n` decimales
+ * Avanza al siguiente decimal un numero a `n` decimales (ver @Number.decimalAdjust)
  *
- * @param  {Number} num
- * @param  {Number} n Numero de decimales
+ * @param  {Number} value
+ * @param  {Number} n
  * @return {Number}
  */
-Number.ceil = function(num, n) {
-    return Number.decimalAdjust(num, n, "ceil");
+Number.ceil = function(value, n) {
+    return Number.decimalAdjust(value, n, "ceil");
+};
+
+/**
+ * Retrocede al anterior decimal un numero a `n` decimales (ver @Number.decimalAdjust)
+ *
+ * @param  {Number} value
+ * @param  {Number} n
+ * @return {Number}
+ */
+Number.floor = function(value, n) {
+    return Number.decimalAdjust(value, n, "floor");
+};
+
+/**
+ * Valida que un valor sea numerico y lo convierte si es necesario. Regresa el valor por default en caso contrario.
+ *
+ * @param {Object} value
+ * @param {Number} defaultValue El numero default
+ * @return {Number} `value` si es numerico, `defaultValue` de lo contrario
+ */
+Number.from = function(value, defaultValue) {
+    if (isFinite(value)) {
+        value = parseFloat(value);
+    }
+
+    return !isNaN(value) ? value : defaultValue;
 };
 
 /**
  * Genera un numero entero aleatorio en el intervalo [from, to]
  *
  * @param {Number} from Minimo del intervalo
- * @param {Number} to Maximo del intervalo
+ * @param {number} to Maximo del intervalo
  * @return {Number} Numero aleatorio
  */
 Number.randomInt = function(from, to) {
     return Math.floor(Math.random() * (to - from + 1) + from);
 };
 
-/**
- * Genera un numero flotante aleatorio en el intervalo [from, to]
- *
- * @param {Number} from Minimo del intervalo
- * @param {Number} to Maximo del intervalo
- * @param {Number} [n] Numero de decimales
- * @return {Number} Numero aleatorio
- */
-Number.randomFloat = function(from, to, n) {
-    var num = Math.random() * (to - from) + from;
-    return Type.isSet(n) ? Number.truncate(num, n) : num;
-};
+return Number;
+
 });

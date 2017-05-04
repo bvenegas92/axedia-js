@@ -1,6 +1,8 @@
 define([
-    "../util/Type"
-], function(Type) {
+    "util/Type"
+], function(
+    Type
+) {
 /**
  * Clona las propiedades simples de un objeto incluyendo:
  * - Array
@@ -17,6 +19,8 @@ Object.clone = function(item) {
     }
 
     // DOM nodes
+    // TODO proxy this to Ext.Element.clone to handle automatic id attribute changing
+    // recursively
     if (item.nodeType && item.cloneNode) {
         return item.cloneNode(true);
     }
@@ -51,25 +55,71 @@ Object.clone = function(item) {
 };
 
 /**
- * Iteraciona `obj` y ejecuta `fn` por cada una de sus propiedades pudiendo
+ * Copia todas las propiedades de `src` a `dest`. La copia es una referencia al objeto original
+ *
+ * @param {Object} dest Objeto destino
+ * @param {Object} src Objeto fuente
+ * @param {Object} defaults Propiedades default
+ * @return {Object} Objeto copiado
+ */
+Object.copy = function(dest, src, defaults) {
+    if (defaults) {
+        Object.copy(dest, defaults);
+    }
+
+    if (dest && src && typeof src === "object") {
+        var i;
+
+        for (i in src) {
+            dest[i] = src[i];
+        }
+    }
+
+    return dest;
+};
+
+/**
+ * Copia todas las propiedades de `src` a `dest` si no existen en `dest`.
+ * La copia es una referencia al objeto original
+ *
+ * @param {Object} dest Objecto
+ * @param {Object} src Propiedades
+ * @return {Object} `dest` con las propiedades agregadas
+ */
+Object.copyIf = function(dest, src) {
+    var property;
+
+    if (dest) {
+        for (property in src) {
+            if (dest[property] === undefined) {
+                dest[property] = src[property];
+            }
+        }
+    }
+
+    return dest;
+};
+
+/**
+ * Iteraciona `object` y ejecuta `fn` por cada una de sus propiedades pudiendo
  * romper la iteracion al regresar `false`.
  *
- * @param {Object} obj
+ * @param {Object} object Objeto a iterar
  * @param {Function} fn Funcion a ejecutar
  * @param {Function} fn.value Valor de la propiedad
  * @param {Function} fn.key Propiedad
  * @param {Function} fn.object El objeto mismo
  * @param {Object} [scope] Scope en que la funcion es ejecutada (referencia de `this`)
  */
-Object.each = function(obj, fn, scope) {
+Object.each = function(object, fn, scope) {
     var i, property;
 
-    if (obj) {
-        scope = scope || obj;
+    if (object) {
+        scope = scope || object;
 
-        for (property in obj) {
-            if (obj.hasOwnProperty(property)) {
-                if (fn.call(scope, property, obj[property], obj) === false) {
+        for (property in object) {
+            if (object.hasOwnProperty(property)) {
+                if (fn.call(scope, property, object[property], object) === false) {
                     return;
                 }
             }
@@ -78,13 +128,12 @@ Object.each = function(obj, fn, scope) {
 };
 
 /**
- * Verifica si dos objectos son iguales.
- * Se consideran iguales si ambos objetos tienen las mismas propiedades
+ * Verifica si dos objectos son iguales. Se consideran iguales si ambos objetos tienen las mismas propiedades
  * y los mismos valores.
  *
- * @param {Object} object1
- * @param {Object} object2
- * @return {Boolean}
+ * @param {Object} object1 Objeto 1
+ * @param {Object} object2 Objeto 2
+ * @return {Boolean} `true` si son iguales, `false` de lo contrario
  */
 Object.equals = (function(object1, object2) {
     var check = function(o1, o2) {
@@ -119,16 +168,15 @@ Object.equals = (function(object1, object2) {
 
 /**
  * Obtiene todos los nombres de las propiedades del objecto.
- * Incluye las propiedades heredadas de su cadena de prototipos.
  *
- * @param {Object} obj
- * @return {Array} Array de nombres de las propiedades
+ * @param {Object} object Objeto
+ * @return {Array} Array de nombres de  las propiedades
  */
-Object.getAllKeys = function(obj) {
+Object.getAllKeys = function(object) {
     var keys = [],
         property;
 
-    for (property in obj) {
+    for (property in object) {
         keys.push(property);
     }
 
@@ -136,26 +184,26 @@ Object.getAllKeys = function(obj) {
 };
 
 /**
- * Obtiene todos los nombres de las propiedades del objecto.
- * No incluye las propiedades heredadas de su cadena de prototipos.
+ * Obtiene todos los nombres de las propiedades del objecto. No incluye las propiedades heredadas de su
+ * cadena de prototipos.
  *
- * @param {Object} obj
- * @return {Array} Array de nombres de las propiedades
+ * @param {Object} object Objeto
+ * @return {Array} Array de nombres de  las propiedades
  */
-Object.getOwnKeys = function(obj) {
-    return Object.keys(obj);
+Object.getKeys = function(object) {
+    return Object.keys(object);
 };
 
 /**
  * Obtiene la primera propiedad que su valor sea `value`
  *
- * @param  {Object} obj
- * @param  {Object} value
+ * @param  {Object} object
+ * @param  {Object} value  Valor a buscar
  * @return {?String} Nombre de la propiedad
  */
-Object.findOwnKey = function(obj, value) {
-    for (var property in obj) {
-        if (obj.hasOwnProperty(property) && obj[property] === value) {
+Object.getKey = function(object, value) {
+    for (var property in object) {
+        if (object.hasOwnProperty(property) && object[property] === value) {
             return property;
         }
     }
@@ -164,18 +212,18 @@ Object.findOwnKey = function(obj, value) {
 };
 
 /**
- * Obtiene todos los valores de las propiedades no heredadas del objeto
+ * Obtiene todos los valores de las propiedades propias del objeto
  *
- * @param  {Object} obj
- * @return {Array} Array de valores
+ * @param  {Object} object  Objeto
+ * @return {Array}         Array de valores
  */
-Object.getOwnValues = function(obj) {
+Object.getValues = function(object) {
     var values = [],
         property;
 
-    for (property in obj) {
-        if (obj.hasOwnProperty(property)) {
-            values.push(obj[property]);
+    for (property in object) {
+        if (object.hasOwnProperty(property)) {
+            values.push(object[property]);
         }
     }
 
@@ -216,4 +264,7 @@ Object.merge = function(destination) {
 
     return destination;
 };
+
+return Object;
+
 });

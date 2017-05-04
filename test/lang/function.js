@@ -1,4 +1,4 @@
-/*describe("Function", function() {
+describe("Function", function() {
     var fn;
 
     beforeEach(function() {
@@ -30,5 +30,11 @@
         expect(value instanceof Rectangle).toBe(true);
         expect(value instanceof Shape).toBe(true);
     });
+
+    it("factory", function() {
+        var fn = Function.factory("return 100;"),
+            value = fn();
+
+        expect(value).toBe(100);
+    });
 });
-*/

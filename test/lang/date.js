@@ -1,8 +1,14 @@
-/*describe("Date", function() {
+describe("Date", function() {
     var date;
 
     beforeEach(function() {
         date = new Date();
+    });
+
+    it('isDate', function() {
+        var value = Date.isDate(new Date());
+
+        expect(value).toBe(true);
     });
 
     it('add', function() {
@@ -11,8 +17,8 @@
         expect(value.getDate()).toEqual(new Date().getDate() + 1);
     });
 
-    it('isBetween', function() {
-        var value = Date.isBetween(
+    it('between', function() {
+        var value = Date.between(
             new Date(2016, 0, 10),
             new Date(2016, 0, 9),
             new Date(2016, 0, 11)
@@ -82,7 +88,7 @@
     });
 
     it('isLeapYear', function() {
-        var value = Date.isLeapYear(new Date(2016, 1, 1)); // Enero 2016
+        var value = Date.isLeapYear(new Date(2016, 0, 1)); // Enero 2016
 
         expect(value).toBe(true);
     });
@@ -100,7 +106,7 @@
     });
 
     it('getGMTOffset', function() {
-        var value = Date.getGMTOffset(new Date(2016, 11, 25));
+        var value = Date.getGMTOffset(new Date(2016, 11, 25)); // Diciembre 2016
 
         expect(value).toEqual('-0700');
     });
@@ -140,5 +146,17 @@
 
         expect(value.getDate()).toEqual(10);
     });
+
+    it('format', function() {
+        var value = Date.format(new Date(2016, 0, 10), "Y-m-d");
+
+        expect(value).toEqual("2016-01-10");
+    });
+
+    it('parse', function() {
+        var value = Date.parse("2016-01-10", "Y-m-d");
+
+        expect(value.getDate()).toBe(10);
+    });
 });
-*/
+

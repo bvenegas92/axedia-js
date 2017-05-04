@@ -16,25 +16,13 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'dist/axedia.js',
-      'test/**/*.js'
+      "test/**/*.js"
     ],
-
-
-    // list of files to exclude
-    exclude: [
-    ],
-
-
-    // preprocess matching files before serving them to the browser
-    // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-    preprocessors: {
-    },
-
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['dots'],
 
 
     // web server port
@@ -51,20 +39,10 @@ module.exports = function(config) {
 
 
     // enable / disable watching file and executing tests whenever any file changes
-    //autoWatch: false,
-
+    autoWatch: false,
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS'],
-
-
-    // Continuous Integration mode
-    // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false,
-
-    // Concurrency level
-    // how many browser should be started simultaneous
-    concurrency: Infinity
+    browsers: ['PhantomJS']
   })
 }

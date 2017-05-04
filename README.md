@@ -1,2 +1,2 @@
-# axedia-js
+# core-js
 Javascript Utilities

@@ -1,4 +1,4 @@
-/*describe("Type", function() {
+describe("Type", function() {
     it('isArray', function() {
         var value = Type.isArray([]);
 
@@ -22,6 +22,13 @@
         value = Type.isDefined(value);
 
         expect(value).toBe(true);
+    });
+
+    it('isSet', function() {
+        var x;
+        var value = Type.isSet(x);
+
+        expect(value).toBe(false);
     });
 
     it('isEmpty', function() {
@@ -69,4 +76,3 @@
         expect(value).toBe(true);
     });
 });
-*/
